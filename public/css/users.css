@@ -1,0 +1,43 @@
+<style>
+    .register_wrap{
+        border-radius: 20px;
+        width:750px; height:800px;
+        position:relative; margin:0 auto;
+    }
+    .register_form{
+        width:300px; margin:0 auto;
+        padding-top:100px;
+    }
+    .form-control{
+        width:320px; height:40px;
+        margin-bottom:10px;
+    }
+    .requireMessage{
+        color:cadetblue; font-size:12px;
+        
+    }
+    label{
+        width:130px; margin-top:15px;
+    }
+    .register_wrap img{
+    position:absolute; top:4%;
+    width:65px; height:65px;
+    left:50%;    margin-left:-32.5px;
+    }
+    .register_sumit{
+        width:320px; height:45px;
+        margin-top:30px; 
+    }
+    .register_cancle{
+        width:320px; height:42.5px;
+        padding-top:10px; margin-top:0;
+    }
+    .alert-danger{
+        margin-top: 70px;
+    }
+    .naver_login img{
+        width:320px; margin:0 auto;
+        margin-top:15px; position:static;
+         
+    }   
+</style>

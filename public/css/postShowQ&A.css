@@ -1,0 +1,85 @@
+    body {background-color:#ebeef1;}
+    .commentEditWrap{display:none;}
+    .repliy{display:none;}
+    .commentRepliy { margin-left:100px;}     
+    #container{
+        width:760px; background-color:white;
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);margin-top:60px; 
+        height:740px; margin-bottom:60px;
+        }
+    .postShow_header1  {margin-top:30px; height:40px;}
+    .postShow_header1 ul { padding-bottom:50px; border-bottom: 2px solid #ddd;}
+    .postShow_header1 ul li:first-child{
+        font-size:22px; width:620px;
+        overflow: hidden;  font-weight: bold;
+    }
+    .postShow_header1 ul li:last-child{
+        float:right; color:deepskyblue;
+        font-size:14px; padding-top:5px;
+    }
+    .postShow_header2{
+        margin-top:40px; height:30px;
+        margin-bottom:30px;
+    }
+    .postShow_header2 ul li {padding :0; font-size:15px; color:darkgray;}
+    .postShow_header2 ul li:last-child{padding-right:25px;}
+    .postShow_header2 ul li:nth-child(2), .postShow_header2 ul li:last-child{float:right;}
+    .postShow_header1 ul li,  .postShow_header2 ul li {float:left;}
+    .postContent{min-height:300px;}
+    .voteFunction {
+        margin:0 auto; width:143px;
+        margin-top:20px;  
+    }
+    .voteFunction ul li {
+        float:left; margin-bottom:50px; border:none; 
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    }
+    .voteFunction form {display: inline-block; float:left;}
+    .voteFunction ul li img {width:20px; padding-bottom:2px;}
+    .voteFunction ul li span{font-size:15px;}
+    .voteFunction ul li {background-color:cornsilk;}
+    .voteFunction ul form:first-child li:first-child {margin-right:15px;}
+    .voteFunction ul li:hover {background-color:white;}
+    .fileWrap {
+        clear:both; height:50px;
+        margin-top:25px; width:524px;
+    }
+    .fileWrap form{float:left; margin-right:30px;}
+    .action__post{
+        clear:both; margin:50px 0 60px 0;
+        float:right; height:34px;
+    }
+    .fileWrap{ display:inline-block; float:left; }
+    .fileWrap button{
+    font-weight:bold; color:white;
+    text-overflow:ellipsis; white-space:nowrap;
+    word-wrap:normal; max-width:180px;
+    overflow:hidden; text-align:left;       
+    }
+    .comment_Wrap{clear:both; background-color:#eee;}
+    .com{
+        clear:both; margin-bottom: 0px;
+        height:30px;
+    }
+    .sendButton{margin-left:11px;}
+    .rePostNumber{display:none;} 
+    .rePost_wrap form, .action__post{ display:inline-block;}
+    .rePost_wrap {clear:both;}
+    #container2{
+    clear:both; width:760px; 
+    background-color: white; box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
+    margin-top: 60px;  background-color:#eee;
+    height:300px; 
+    }
+    .rePostContent{
+        min-height:100px; overflow: auto;
+        max-height: 221px;
+     }
+    .editWrap{
+        width:760px; margin:0 auto;
+        clear:both; margin-bottom:150px;
+     }
+     .postShow_header2{
+         margin-top:20px; border-bottom: 2px solid white;
+        padding-bottom:40px; 
+     }
