@@ -1,0 +1,29 @@
+{
+
+    "protocol": "sftp",
+
+    "host": "115.68.220.209",
+
+    "port": 22,
+
+    "user": "root",
+
+    "pass": "ghfjdk",
+
+    "promptForPass": false,
+
+    "remote": "/root/kshweb",
+
+    "secure": false,
+
+    "secureOptions": null,
+
+    "connTimeout": 10000,
+
+    "pasvTimeout": 10000,
+
+    "keepalive": 10000,
+
+    "watch": []
+
+}

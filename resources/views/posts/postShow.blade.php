@@ -112,7 +112,8 @@
                     <button class="btn btn-default" type="submit">글 삭제</button>
             </form>
         @endcan
-        <a href="{{route('posts.index', ['boardNumber' => $boardNumber])}}" class="btn btn-default">글 목록</a>
+        
+        <a href="{{route('posts.index', ['boardNumber' => $boardNumber, 'boardTypeCode' => $boardTypeCode])}}" class="btn btn-default">글 목록</a>
     </div>
     <div class="fileWrap">       
         @forelse($files as $file)
@@ -153,9 +154,10 @@
                     <div class="commentRegister">
                         @if($comment->user['userId'] == $currentUser)
                             @can('delete', $comment)
+                          
                                 <form method="post" style="display:inline-block; float:right;" action="{{ route('posts.commentDelete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber, 'commentNumber' => $comment->commentNumber]) }}">
                                      {!! csrf_field() !!}
-                                    <input type="hidden" name="commentNumber" value="<? echo $comment->commentNumber; ?>">
+                                    <input type="hidden" name="commentNumber" value="{{ $comment->commentNumber }}">
                                     <button class="editComment" type="submit">댓글삭제</button>      
                                 </form>
                             @endcan     
@@ -193,7 +195,7 @@
                             <div class="form-group ReCom" {{ $errors->has('commentContent') ? 'has-error' : '' }}>
                                 <div class="recomment2"></div>
                                 <textarea name="commentContent" class="form-control commentText" 
-                                style="width:550px; margin-left:53px; min-height:73px; float:left; clear:both;" class="form-control reComment">{{-- old('commentContent') --}}</textarea>
+                                style="width:770px; margin-left:53px; min-height:73px; float:left; clear:both;" class="form-control reComment">{{-- old('commentContent') --}}</textarea>
                                 {{--!! $errors->first('commentContent', '<span class="form-error">:message</span>!!--}}
                                 <button type="submit" class="btn btn-primary btn-sm sendButton" style="margin-bottom:15px; height:73px; 
                                 width:100px; float:left;">
@@ -224,7 +226,7 @@
                             <input type="hidden" id="statusValue" name="statusValue" value="1">
                         <div class="form-group" {{-- $errors->has('commentContent') ? 'has-error' : '' --}}">
                             <textarea name="commentContent" class="form-control commentText" 
-                            style="width:589px; margin-left:29px; min-height:73px; float:left;">{{-- old('commentContent') --}}</textarea>
+                            style="width:809px; margin-left:29px; min-height:73px; float:left;">{{-- old('commentContent') --}}</textarea>
                             {{--!! $errors->first('commentContent', '<span class="form-error">:message</span>!!--}}
                             <button type="submit" class="btn btn-primary btn-sm sendButton" style="margin-bottom:15px; height:73px; 
                             width:100px; float:left;">

@@ -32,8 +32,8 @@
                     }
                 });
             </script>
-              <input type="file" name="files[]" id="files fileCheck" class="form-control file" multiple="multiple" accept="image/*" required/>
-                
+              <input type="file" name="files[]" id="files fileCheck" class="form-control file" multiple="multiple" accept="image/*"  required/>
+              <h5 style="color:coral; margin-top:70px; margin-left:14px;" >썸네일 파일 필수</h5>    
           @else
               <input type="file" name="files[]" id="files" class="form-control file" multiple="multiple"/>
               <input type="file" name="files[]" id="files" class="form-control file" multiple="multiple"/>

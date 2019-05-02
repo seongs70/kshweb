@@ -36,7 +36,7 @@
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
         <div class="">
             <label>아이디</label>
-            <input type="text" name="userId" id="userId" value="{{ old('userId')}}" class="form-control"/>
+            <input type="text" name="userId" id="userId" value="admin" class="form-control"/>
             @if ($errors->has('userId'))
                 <span class="invalid-feedback" role="alert">
                     <strong class="requireMessage">{{ $errors->first('userId') }}</strong>
@@ -45,7 +45,7 @@
         </div>
         <div class="" {{ $errors->has('password') ? 'has-error' : '' }}>
             <label>패스워드</label>
-            <input type="password" name="password" id="password" value="" class="form-control"/>
+            <input type="password" name="password" id="password" value="123456" class="form-control"/>
             @if ($errors->has('password'))
                 <span class="invalid-feedback" role="alert">
                     <strong class="requireMessage">{{ $errors->first('password') }}</strong>
@@ -54,13 +54,13 @@
         </div>
         <div class="" {{ $errors->has('password') ? 'has-error' : '' }}>
             <label>패스워드 확인</label>
-            <input type="password" name="password_confirmation" id="password_confirmation" value="" class="form-control"/>
+            <input type="password" name="password_confirmation" id="password_confirmation" value="123456" class="form-control"/>
         </div>
         <div class="form-group" style="margin-bottom:10px;">
             <input type="submit" value="로그인" class="btn btn-primary register_sumit">
         </div>
             <a href="/" class="btn btn-primary register_cancle">뒤로가기</a>
-            <a href="/auth/naver"><div class="naver_login" style="margin-bottom:14px;"><img src="/images/naver_login2.png"></div></a>
+
     </form>
 </div>
 </body>

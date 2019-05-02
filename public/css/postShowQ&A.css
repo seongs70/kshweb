@@ -3,9 +3,9 @@
     .repliy{display:none;}
     .commentRepliy { margin-left:100px;}     
     #container{
-        width:760px; background-color:white;
+        width:980px; background-color:white;
         box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);margin-top:60px; 
-        height:740px; margin-bottom:60px;
+        min-height:740px; margin-bottom:60px;
         }
     .postShow_header1  {margin-top:30px; height:40px;}
     .postShow_header1 ul { padding-bottom:50px; border-bottom: 2px solid #ddd;}
@@ -66,17 +66,17 @@
     .rePost_wrap form, .action__post{ display:inline-block;}
     .rePost_wrap {clear:both;}
     #container2{
-    clear:both; width:760px; 
+    clear:both; width:980px; 
     background-color: white; box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
     margin-top: 60px;  background-color:#eee;
-    height:300px; 
+    margin-bottom: 50px;
     }
     .rePostContent{
-        min-height:100px; overflow: auto;
-        max-height: 221px;
+        min-height:140px; overflow: auto;
+       
      }
     .editWrap{
-        width:760px; margin:0 auto;
+        width:980px; margin:0 auto;
         clear:both; margin-bottom:150px;
      }
      .postShow_header2{

@@ -50,8 +50,21 @@ class Handler extends ExceptionHandler
      * @param  \Exception  $exception
      * @return \Illuminate\Http\Response
      */
+//    public function render($request, Exception $exception)
+//    {
+//        return parent::render($request, $exception);
+//    }
+//    
+    
     public function render($request, Exception $exception)
-    {
-        return parent::render($request, $exception);
+{
+    if ($exception instanceof \Symfony\Component\HttpFoundation\File\Exception\FileException) {
+        // create a validator and validate to throw a new ValidationException
+        return Validator::make($request->all(), [
+            'files' => 'required|file|size:10000',
+        ])->validate();
     }
+
+    return parent::render($request, $exception);
+}
 }

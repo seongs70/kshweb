@@ -3,7 +3,7 @@
     .commentEditWrap{display:none;}
     .repliy{display:none; position:relative;}
     #container{
-        width:760px; background-color:white;
+        width:980px; background-color:white;
         box-shadow: 0 1px 3px 0 rgba(0,0,0,.15); margin-top:60px; 
         min-height:960px; margin-bottom:60px; 
         }
@@ -25,7 +25,7 @@
     .postShow_header2 ul li:last-child{padding-right:25px;}
     .postShow_header2 ul li:nth-child(2), .postShow_header2 ul li:last-child{float:right;}
     .postShow_header1 ul li,  .postShow_header2 ul li {float:left;}
-    .postContent{min-height:300px;}
+    .postContent{min-height:300px; overflow:auto;}
     .voteFunction {
         margin:0 auto; width:143px;
         margin-top:20px;  

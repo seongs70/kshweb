@@ -90,6 +90,7 @@
             </form>
         </ul>
     </div>
+   
     <div class="text-right action__post">
         @can('update', $post)
             <a href="{{ route('posts.edit', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" >
@@ -99,6 +100,7 @@
                     <input type="hidden" id="postNumber" name="postNumber" value="<?php echo $postNumber; ?>">
                     <input type="hidden" id="postContent1" name="postContent" value="{{$post->postContent}}">
                     <input type="hidden" id="postName" name="postName" value="{{$post->postName}}">
+                    <input type="hidden" id="boardTypeCode" name="boardTypeCode" value="{{ $boardTypeCode }}">
                     <button type="submit">글 수정</button>
                 </form>
             </a>
@@ -112,8 +114,9 @@
                     <input type="hidden" name="_method" value="delete">
                     <button class="btn btn-default" type="submit">글 삭제</button>
             </form>
+           
         @endcan
-            <a href="{{route('posts.index', ['boardNumber' => $boardNumber])}}" class="btn btn-default">
+            <a href="{{route('posts.index', ['boardNumber' => $boardNumber, 'boardTypeCode' => $boardTypeCode])}}" class="btn btn-default">
                 글 목록
             </a>
        <div class="fileWrap">   

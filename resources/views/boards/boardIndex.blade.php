@@ -66,7 +66,15 @@
             </li>    
             <li>{{ $board->created_at->diffForHumans() }}</li>
             <li>
-            <a href="{{ route('boards.show', $board->boardNumber)}}" style="color:coral;">게시판 관리</a></li>
+            <a href="/board/{{ $board->boardNumber }}" style="color:coral;">
+                <form method="get" action="{{ route('boards.show', ['boardNumber' => $board->boardNumber]) }}">
+                    <input type="hidden" id="boardTypeCode" name="boardTypeCode" value="{{$board->boardTypeCode}}">
+                    <input type="hidden" id="boardNumber" name="boardNumber" value="{{$board->boardNumber}}">
+                    <input type="hidden" id="boardName" name="boardName" value="{{$board->boardName}}">
+                    <button type="submit">게시판 관리</button>
+                </form>
+            </a>
+             
         </ul>    
         @empty
             <p class="text-center text-danger">게시판이 없습니다.</p>

@@ -1,0 +1,206 @@
+<style>
+    html, body { height:100%; }
+
+  .container{
+      width:100%; height:463px;
+      background-image:url("/images/background.jpg"); background-position:bottom;
+      background-repeat: no-repeat; background-size:cover;
+    }
+    .main1, .main2{
+      width:1200px; height:190px; margin:0 auto;
+    }
+    .main1 ul li, .main2 ul li {
+      float:left; width:380px;
+      height:300px; margin-right:30px;
+      background-position:bottom;
+      background-repeat: no-repeat; background-size:cover;
+
+    }
+    .main1{ margin-top:100px;}
+    .main1 ul li:hover{opacity: 0.8;}
+    .main2{ height:30px; }
+    .main2 ul li{
+        border-radius: 30px;
+        text-align:center; font-size:24px;
+        font-weight: 500; height:130px;
+        margin-top:15px;
+    }
+
+    .main2 ul a{color:#1e1e1e;}
+    .main2 ul a:hover{color:cornflowerblue;}
+    .main1 ul a:first-child li{
+          background-image:url("/images/main2-3.jpg");
+    }
+    .main1 ul a:nth-child(2) li{
+         background-image:url("/images/main2-2.jpg");
+    }
+    .main1 a:last-child li{
+        background-image:url("/images/main2-1.jpg");
+        margin-right:0;
+    }
+    .main2 ul li:last-child{
+        margin-right:0;
+    }
+    .main3{
+      width:1140px; height:120px; margin:0 auto;
+      background-image:url("/images/main3.jpg"); background-position:center;
+      background-repeat: no-repeat; background-size:cover;
+      margin-bottom:100px;
+    }
+    .main4{
+      width:1140px; height:300px; margin:0 auto;
+      margin-bottom:150px;
+    }
+    .main4 ul li{
+        width:550px; height:300px; float:left;
+        background-position:center; background-repeat: no-repeat; background-size:cover;
+        box-shadow: 0 1px 7px 0 rgba(0,0,0,.15);
+    }
+    .main4 ul li:first-child {margin-right:40px; background-image:url("/images/main4-1.jpg");}
+    .main4 ul li:last-child {background-image:url("/images/main4-2.jpg");}
+    footer{width:100%; height:30px;
+    color:white; background-color:black;
+    font-size:11px; text-align: center;
+  padding:8px;
+    }
+.slideshow {
+display:block; margin:0 auto;
+width: 100%; height: 600px;
+position: relative; overflow: hidden;
+
+}
+    .slideshow ul li img {width:100%; height:600px;}
+.slidenav {
+width:100%; position: absolute;
+
+top: 50%; text-align: center;
+
+}
+.git{ color:black; position:absolute; bottom:8%; left:24%; font-size:21px;
+  padding:12px 40px; font-weight: bold; border:none;}
+  .git:hover{background-color:#000; border:none; color:#fff;}
+.slidenav__item {
+font-size:1vw; border: 0;
+background: none; border-radius:4px;
+color:#fff; background: #f55;
+padding: 8px 8px;
+}
+.slidenav__item:hover {
+color: var(--color-nav-hover);
+}
+.slidenav__item{
+background-size:cover; position:absolute;
+background-color:transparent;
+width:60px;  height:60px;}
+.slidenav__item--prev{ background-image:url(/images/btn_prev.png); cursor:pointer; left:20%;}
+.slidenav__item--next{ background-image:url(/images/btn_next.png); cursor:pointer; right:20%;}
+.slidenav__item--prev:hover, .slidenav__item--next:hover { opacity:0.8; }
+.arrow_prev:hover, .arrow_next:hover { opacity:0.5; }
+.bg_01 {
+width:100%; margin-bottom:100px;
+height:500px; background-position:bottom;
+background-size:cover;	background-image:url(/images/21.jpg);
+background-repeat:no-repeat; opacity:0.8;
+position:relative; clear:both;
+}
+.panel {
+position:absolute; left:50%;
+top:50%; margin-left:-150px;
+margin-top:-150px; width:300px;
+height:300px; border-radius: 100%;
+/*3d 효과*/
+-webkit-transform: perspective(600); transform: perspective(600);
+}
+.panel .front {
+position:absolute; top:0;
+z-index:10; width:inherit;    /*부모에게서 상속*/
+height:inherit;	 transform:rotateX(0deg) rotateY(0deg);
+/*뒷면 숨김*/
+backface-visibility:hidden; transition:all 0.4s ease-in-out;
+}
+/*.panel에 사용할 클래스 .flip 설정*/
+.panel.flip .front {
+z-index:10; -webkit-transform:rotateY(180deg);
+-moz-transform:rotateY(180deg); -ms-transform:rotateY(180deg);
+-o-transform:rotateY(180deg); transform:rotateY(180deg);
+}
+.panel .back {
+position:absolute; top:0;
+z-index:9; width:inherit;
+height:inherit; -webkit-transform:rotateY(-180deg);
+-moz-transform:rotateY(-180deg); -ms-transform:rotateY(-180deg);
+-o-transform:rotateY(-180deg); transform:rotateY(-180deg);
+transform-style:preserve-3d; backface-visibility:hidden;
+-webkit-transition:all 0.4s ease-in-out; -moz-transition:all 0.4s ease-in-out;
+-ms-transition:all 0.4s ease-in-out; -o-transition:all 0.4s ease-in-out;
+transition:all 0.4s ease-in-out;
+}
+.panel.flip .back {
+z-index:11; -webkit-transform:rotateX(0deg) rotateY(0deg);
+-moz-transform:rotateX(0deg) rotateY(0deg); -ms-transform:rotateX(0deg) rotateY(0deg);
+-o-transform:rotateX(0deg) rotateY(0deg); transform:rotateX(0deg) rotateY(0deg);
+}
+.panel .front .pad {
+width:296px; height:296px;
+background-image:url(/images/a2.jpg); background-size:cover;
+border-radius:100%;
+}
+.panel .back .pad {
+width:296px; height:296px;
+background-image:url(/images/c2.jpg); background-size:100%;
+border-radius:100%;	position:relative;
+}
+.bg_01 h1{ text-align: center; font-weight: bold;
+  font-size:50px; position:absolute;
+width:300px; left:50%; margin-left:-150px;
+bottom:5%; color:black;}
+.bg_01 h1:hover { color:brown;}
+.bg2 {
+width:100%; height:290px;
+background-image:url(/images/backimg.jpg); background-repeat:no-repeat;
+  background-size:cover; background-attachment:fixed;
+clear:both; z-index:1;
+}
+.bg3 {
+width:100%; height:400px;
+
+background-image:url(/images/bg_gallery.jpg); background-repeat:no-repeat;
+background-size:cover;
+clear:both; z-index:1; text-align: center;
+
+}
+.bg3 ul{position:absolute;}
+.bg3 ul:first-child{margin-right:130px; left:-70%;}
+.bg3 ul:last-child{right:-70%;}
+.bg3 ul:first-child li {
+
+  float:left; font-weight:bold;
+  color:#1e1e1e; padding-left:50px;
+}
+.bg3 ul:last-child li {
+  text-align:left; margin:20px 0;
+  float:none; font-weight:bold;}
+  .bg3 ul:last-child li:first-child{font-size:30px; color:black;}
+  .bg3 ul:last-child li:nth-child(2){font-size:20px; color: cornflowerblue;}
+  .bg3 ul:last-child li:last-child{font-size:20px; color: cornflowerblue; padding:10px;
+   display:table; border:5px;}
+   .bg3 ul:last-child li:last-child:hover { background-color:beige; }
+   .bg3 ul:last-child li:last-child:hover a {color:tomato;}
+.bg3 img {width:90px; margin:0 30px;}
+.bg3_1 {margin:0 auto; width:1200px; position:relative;
+  display: -webkit-box; padding-top:110px;
+}
+.alert-info{
+    z-index: 1;    position:absolute;
+    width: 240px; left:0%;
+    margin-top:365px; font-size:12px;
+    padding:14px;
+}
+.boardSetting{ width:150px;
+
+}
+
+
+
+
+</style>

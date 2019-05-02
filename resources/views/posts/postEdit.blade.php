@@ -18,6 +18,7 @@
     <div class="page-header">
         <h2> <small> 글 수정하기</small></h2>
     </div>
+    
     <form action="{{ route('posts.update', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" method="post">
       {!! csrf_field() !!}
        
@@ -31,7 +32,7 @@
         </div>
         <div class="form-group {{ $errors->has('content') ? 'has-error' : '' }} ">
             <label for="content">본문</label>
-            <textarea name="postContent" id="postContent" rows="10" class="form-control">{{ old('postContent', $postContent) }}</textarea>
+            <textarea name="postContent" id="postContent" rows="10" class="form-control"></textarea>
              {!! $errors->first('postContent', '<span class="form-error" style="color:coral;">:message</span>') !!}
  
           <script>

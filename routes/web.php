@@ -85,6 +85,33 @@ Route::post('auth/passwordReset',[
 Route::resource('boards', 'BoardController');
 
 
+Route::get('board/{boardNumber}/', [
+    'as' => 'boards.show',
+    'uses' => 'BoardController@show'
+]);
+
+Route::get('board/{boardNumber}/delete', [
+    'as' => 'board.delete',
+    'uses' => 'BoardController@destroy'
+]);
+
+Route::get('board/{boardNumber}/edit', [
+    'as' => 'board.edit',
+    'uses' => 'BoardController@edit'
+]);
+
+Route::post('board/{boardNumber}/update', [
+    'as' => 'board.update',
+    'uses' => 'BoardController@update'
+]);
+
+
+
+
+
+
+
+
 ///////////게시글///////////
 //게시글
 Route::get('/boards/{boardNumber}/posts', [

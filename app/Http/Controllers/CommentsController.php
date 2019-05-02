@@ -24,8 +24,6 @@ class CommentsController extends Controller
     //댓글 생성 처리
     public function store(\App\Http\Requests\CommentsRequest $request, \App\Post $post)
     {   
-        
-
         $boardNumber = $request->boardNumber;
         //댓글 생성처리, 입력받은 데이터 생성
         $comment = $post->comments()->create($request->all());
@@ -40,9 +38,12 @@ class CommentsController extends Controller
     }
     
     //댓글 삭제
-    public function destroy(\App\Http\Requests\CommentsRequest $request, \App\Post $post)
-    {
+    public function destroy(Request $request)
+    {    
+       
         \DB::table('comments')->where('commentNumber', $request->commentNumber)->delete();
+        
+        //dd($request);
         return redirect(route('posts.show', ['boardNumber' => $request->boardNumber, 'postNumber' => $request->postNumber]));
     }
     
