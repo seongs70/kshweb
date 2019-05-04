@@ -1,6 +1,7 @@
 <html>
 <head>
     <title>라라벨 포트폴리오</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1">
     <link href="{{ asset('/images/logo3.png') }}" type="image" rel="shortcut icon">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css"/>
 

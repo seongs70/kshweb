@@ -22,10 +22,10 @@ class PostController extends Controller
         //비회원 제외
         //$this->middleware('auth', ['except'=>['index','show']]);
     }
-    
+
     //게시글 목록
     public function index(Request $request, $slug = null)
-    {   
+    {
         //게시판 코드, 일련번호, 명, 변수처리
         $boardTypeCode = $request -> boardTypeCode;
         $boardNumber = $request -> boardNumber;
@@ -40,9 +40,9 @@ class PostController extends Controller
         $posts = \App\Post::where('boardNumber', '=', $boardNumber)->where('postparentNumber',null)->latest()->paginate(10);
         //form에서 select : 제목, 내용, 이름, 무엇인지의 대한 변수
         $find = $request -> find;
-        //검색한 내용 변수저장 
+        //검색한 내용 변수저장
         $search  = $request -> search;
-        
+
         //검색값이 있으면 검색값을 찾는것 검색값 앞뒤 아무거나 붙을 수 있다
         if($find || $search !== null){
         $searchs = \App\Post::where('boardNumber',$boardNumber)->where($find, 'like', '%' . $search . '%')->where('postparentNumber',null)->latest()->paginate(10);
@@ -67,54 +67,41 @@ class PostController extends Controller
             {
                 return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode'));
             }
-         
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
         }else{
             if(isset($searchs)){
                 return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','searchs','find','search','boardTypeCode'));
             }
             else
             {
-                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode'));   
+                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode'));
             }
         }
     }
-    
+
     //게시글 생성 뷰 데이터
     public function create(Request $request)
-    {   
+    {
         $boardTypeCode = $request -> boardTypeCode;
         $boardNumber = $request -> boardNumber;
         $post = new \App\Post;
         return view('posts.postCreate', compact('post','boardNumber','boardTypeCode'));
     }
-    
+
     //게시글 생성뷰에서 전송한 데이터 처리
     public function store(Request $request)
-    {  
+    {
         //form으로 받은 게시판 코드, 일련번호 변수처리
         $boardTypeCode = $request -> boardTypeCode;
         $boardNumber = $request->boardNumber;
         //게시글 내용 변수에 저장
         $detail=$request->input('postContent');
-        
+
         //이지윅으로 사진 첨부시 base64인코딩 때문에 글자수가 너무 길게 DB에 저장된다.
         //그렇기 때문에 아래 문법으로 원래 파일명으로 저장시킨다.
         $dom = new \DomDocument();
-        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
-        
+
         foreach($images as $k => $img){
             $data = $img->getAttribute('src');
             list($type, $data) = explode(';', $data);
@@ -127,12 +114,12 @@ class PostController extends Controller
             $img->setAttribute('src', $image_name);
         }
         $detail = utf8_decode($dom->saveHTML($dom->documentElement));
-       
-        //글이 저장되지 않았을시 
+
+        //글이 저장되지 않았을시
         if(!$request){
             return back()->with('flash_message', '글이 저장되지 않았습니다.')->withInput();
         }
-        
+
             //현재 접속중인 사용자 일련번호
             $currentUserNumber = Auth::user()->userNumber;
             //현재 접속중인 사용자 닉네임
@@ -140,7 +127,7 @@ class PostController extends Controller
             //게시글 생성
             $post = \App\Post::create([
             'boardNumber' => $request->input('boardNumber'),
-            'nickName' => $currentUserNickName,       
+            'nickName' => $currentUserNickName,
             'userNumber' => $currentUserNumber,
             'postparentNumber' => $request->input('postparentNumber'),
             'postName' => $request->input('postName'),
@@ -149,7 +136,7 @@ class PostController extends Controller
             'announcementFunctionStatus' => '1',
             'secretPostStatus' => '1',
         ]);
-        
+
         //파일첨부를 했을시
 
         if ($request->hasFile('files')){
@@ -174,31 +161,31 @@ class PostController extends Controller
             //intervention/image:이미지 실시간 미리보기(썸네일) , base64 해결하기 위해, composer로 설치해야된다. app/config에 등록도 해야함
             $thumbnail = Image::make(public_path('/files/'.$filename))->resize(360, '')->save(public_path('/thumbnail/'.$filename));
             \DB::table('posts')->where('postNumber', $post->postNumber)->update(['thumbnail' => $filename]);
-        }   
+        }
         //라우터로 리다이렉트 어느 게시판의 생성하는지, 게시판의 코드는 뭔지 데이터가 필요해서 보내준다
         return redirect(route('posts.index', ['boardNumber' => $request->boardNumber, 'boardTypeCode'=>$boardTypeCode,]));
     }
-    
+
     //게시글
     public function show(Request $request)
-    {   
-        
-        //게시판 일련번호, 코드 ,명      게시글 일련번호 
+    {
+
+        //게시판 일련번호, 코드 ,명      게시글 일련번호
         $boardName = $request->boardName;
         $boardNumber = $request->boardNumber;
         $postNumber = $request->postNumber;
         $boardTypeCode = $request->boardTypeCode;
         //$boardTypeCode = DB::table('boards')->where('boardNumber', '=' ,$boardNumber)->value('boardTypeCode');
-        //where구문으로 게시글의 맞는 파일, 댓글, 투표, 게시글정보 , 조회수 데이터 처리 
+        //where구문으로 게시글의 맞는 파일, 댓글, 투표, 게시글정보 , 조회수 데이터 처리
         $posts = \App\Post::get()->where('postNumber',$postNumber);
         $files = \App\File::get()->where('post_postNumber',$postNumber);
         $comments = \App\Comment::get()->where('postNumber',$postNumber);
         $vote = \App\Vote::get()->where('postNumber',$request->postNumber);
         $viewCount = DB::table('posts')->where('postNumber', $request->postNumber)->value('viewCount');
-        
+
         //update랑 delete를 구문을 사용하려면 Providers에서 AuthServiceProvider에서 설정해줘야한다.
         \DB::table('posts')->where('postNumber', $request->postNumber)->update(['viewCount' => ++$viewCount]);
-        
+
         //3:갤러리 게시판일시
         if($boardTypeCode == 3){
             //부모게시글이 어떤 일련번호인지 데이터 가져옴
@@ -208,20 +195,20 @@ class PostController extends Controller
         return view('posts.postShow', compact('posts','boardName','postNumber','boardNumber','files','comments','vote','viewCount','boardTypeCode'));
         }
     }
-    
+
     //파일다운로드
     public function fileDownload(Request $request){
-        
+
         //파일 다운로드 클릭하면 파일경로에 있는 파일 다운로드 시킴
-        return response()->download(files_path($request -> fileDownload));   
+        return response()->download(files_path($request -> fileDownload));
     }
 
     //글 수정
     public function edit(Request $request)
-    {   
+    {
         //글 수정 뷰로 가기 위한 데이터처리
         //필요한 데이터 변수처리 해주고
-        
+
         $boardNumber = $request-> boardNumber;
         $postNumber = $request->postNumber;
         $boardTypeCode = $request->boardTypeCode;
@@ -230,10 +217,10 @@ class PostController extends Controller
         $this->authorize('update', $request);
         return view('posts.postEdit', compact('boardNumber','postNumber','boardTypeCode','postContent','postName'));
     }
-    
+
     //글 수정view에서 입력한 데이터 처리
     public function update(Request $request)
-    {   
+    {
         Validator::make($request->all(), [
             'postName' => 'required|min:2',
             'postContent' => 'required|min:8',
@@ -243,7 +230,7 @@ class PostController extends Controller
         //위즈윅으로 사진 올렸을 시 사진 이름이 base64라 너무길기에 파일명 이름으로 수정하는 변수처
         $detail=$request->input('postContent');
         $dom = new \DomDocument();
-        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);    
+        $dom->loadHtml($detail, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
         $images = $dom->getElementsByTagName('img');
         foreach($images as $k => $img){
             $data = $img->getAttribute('src');
@@ -259,13 +246,13 @@ class PostController extends Controller
         $detail = utf8_decode($dom->saveHTML($dom->documentElement));
         //DB에 업데이트
         \DB::table('posts')->where('postNumber', $request->postNumber)->update(['postName' => $request->postName, 'postContent' => $detail]);
-       
+
         return redirect(route('posts.index', ['boardNumber' => $request->boardNumber, 'boardTypeCode' => $boardTypeCode]));
     }
 
     //글 삭제
     public function destroy(Request $request, \App\Post $post)
-    {   
+    {
         $boardTypeCode = $request->boardTypeCode;
         //게시글 삭제
         \DB::table('posts')->where('postNumber', $request->postNumber)->delete();
@@ -273,7 +260,7 @@ class PostController extends Controller
         //일반게시판으로 보여주는지를 보여준다
         return redirect(route('posts.index', ['boardNumber' => $request->boardNumber, 'boardTypeCode' => $request->boardTypeCode]));
     }
-    
+
     //투표기능, 좋아요, 싫어요
     public function vote(Request $request, \App\Post $post)
     {
@@ -285,6 +272,6 @@ class PostController extends Controller
             'down' => $request->down,
             ]);
         return redirect(route('posts.show', ['boardNumber' => $request->boardNumber, 'postNumber' => $request->postNumber]));
-    }  
-    
+    }
+
 }

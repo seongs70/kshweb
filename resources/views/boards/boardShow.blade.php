@@ -1,9 +1,9 @@
 @extends('layouts.master')
 <style>
     .postIndex_boardName h4{
-        font-size:25px; margin-top:60px; 
+        font-size:25px; margin-top:60px;
         margin-left:200px; margin-bottom:20px;
-        font-weight:bold; display:inline-block; 
+        font-weight:bold; display:inline-block;
         padding-bottom:12px; border-bottom:5px solid #dedede;
         text-shadow: 0px 1px 1px #dedede;
     }
@@ -15,7 +15,7 @@
 @section('content')
 
 <div class="container">
-    
+
         <div class="postIndex_boardName">
             <h4>{{ $boardName }}</h4>
         </div>
@@ -30,20 +30,16 @@
                     <input type="hidden" name="boardNumber" value="{{$boardNumber}}">
                     <input type="hidden" name="boardName" value="{{$boardName}}">
                     <button class="btn btn-info" type="submit">게시판명 수정</button>
-                </form>   
+                </form>
             </a>
         </div>
-            <form method="get" action="{{ route('board.delete', ['boardNumber' => $boardNumber])}}" style="display: inline;">
+            <!-- <form method="get" action="{{ route('board.delete', ['boardNumber' => $boardNumber])}}" style="display: inline;">
                    {!! csrf_field() !!}
                     <input type="hidden" name="boardNumber" value="{{$boardNumber}}">
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="_method" value="delete">
-                    <button class="btn btn-primary" type="submit">게시판 삭제</button>
+                    <input type="hidden" name="_method" value="delete"> -->
+                    <button class="btn btn-primary" type="submit">삭제(게시판 삭제 당해서 미작동)</button>
             </form>
-    </div>  
-</div>    
+    </div>
+</div>
 @stop
-
-
-
-
