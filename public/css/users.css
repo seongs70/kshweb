@@ -1,7 +1,8 @@
-<style>
+    body{background-color:gainsboro;}
+    .wrap{display:none;}
     .register_wrap{
         border-radius: 20px;
-        width:750px; height:800px;
+        width:100%; height:100%;
         position:relative; margin:0 auto;
     }
     .register_form{
@@ -9,12 +10,12 @@
         padding-top:100px;
     }
     .form-control{
-        width:320px; height:40px;
+        width:; height:40px;
         margin-bottom:10px;
     }
     .requireMessage{
         color:cadetblue; font-size:12px;
-        
+
     }
     label{
         width:130px; margin-top:15px;
@@ -25,11 +26,11 @@
     left:50%;    margin-left:-32.5px;
     }
     .register_sumit{
-        width:320px; height:45px;
-        margin-top:30px; 
+        width:100%; height:45px;
+        margin-top:30px;
     }
     .register_cancle{
-        width:320px; height:42.5px;
+        width:100%; height:42.5px;
         padding-top:10px; margin-top:0;
     }
     .alert-danger{
@@ -38,6 +39,22 @@
     .naver_login img{
         width:320px; margin:0 auto;
         margin-top:15px; position:static;
-         
-    }   
-</style>
+    }
+    .naver_login2{
+        width:100%; height:65px;
+        padding-top:10px;
+        background-image:url(/images/naver_login2.PNG); background-repeat:no-repeat;
+        background-size:cover;
+        margin-top:1vw;
+    }
+    .m_user{display:none;}
+@media screen and (max-width:960px) {
+    .wrap, .m_user{display:block;}
+    .logo, .register_cancle{display:none;}
+    .register_form{padding-top:3vw;}
+    .register_wrap img{display:none;}
+    .m_user  {margin-top:8vw; }
+    .m_user span a{font-size:16px;  color:cadetblue;}
+    .m_user span:first-child, .m_user span:nth-child(2){margin-right:5vw;}
+
+}

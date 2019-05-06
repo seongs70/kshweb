@@ -4,8 +4,8 @@
     .repliy{display:none; position:relative;}
     #container{
         width:980px; background-color:white;
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,.15); margin-top:60px; 
-        min-height:960px; margin-bottom:60px; 
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.15); margin-top:60px;
+        min-height:960px; margin-bottom:60px;
         }
     .postShow_header1  { margin-top:30px; height:40px;}
     .postShow_header1 ul { padding-bottom:50px; border-bottom: 2px solid #ddd;}
@@ -28,10 +28,10 @@
     .postContent{min-height:300px; overflow:auto;}
     .voteFunction {
         margin:0 auto; width:143px;
-        margin-top:20px;  
+        margin-top:20px;
     }
     .voteFunction ul li {
-        float:left; margin-bottom:50px; 
+        float:left; margin-bottom:50px;
         border:none; box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
     }
     .voteFunction form {display: inline-block; float:left;}
@@ -51,7 +51,7 @@
     font-weight:bold; color:white;
     text-overflow:ellipsis; white-space:nowrap;
     word-wrap:normal; max-width:180px;
-    overflow:hidden; text-align:left;       
+    overflow:hidden; text-align:left;
     }
     .comment_Wrap{
         clear:both; background-color:#eee;
@@ -68,7 +68,7 @@
     .commentRegister ul {display:inline-block;}
     .commentRegister ul li{float:left;}
     .commentRegister ul li:first-child {
-        margin-right:40px; clear:both; 
+        margin-right:40px; clear:both;
         font-weight: bold; font-size:15px;
         margin-bottom:5px;
     }
@@ -88,10 +88,41 @@
     .recomment2{ cursor: pointer;}
     .repliyCancle {
         display:inline-block; cursor: pointer;
-        z-index: 9999; margin-left:70px; 
+        z-index: 9999; margin-left:70px;
         margin-top: -144px; position: relative;
     }
     .commentRepliy{clear:both; margin-left:30px;}
     .commentRepliy ul{display:inline-block; margin-bottom:0;}
     .commentRepliy img {margin-top: -30px;}
     .commentContent2{margin-left:30px;}
+    .form-group textarea{width:809px; margin-left:29px; min-height:73px; float:left;}
+    .sendButton{margin-bottom:15px; height:73px;
+    width:100px; float:left;}
+@media screen and (max-width:960px) {
+    .m_notice {
+        width:100%; padding:4.5vw 0;
+        background-color:white;
+        box-shadow: 0 1px 7px 0 rgba(0,0,0,.15);
+        display:block;
+    }
+    .m_notice span{
+        margin-left:5vw; font-size:4.5vw;
+        font-weight:bold;
+     }
+    #container{
+        width:100%;     margin-top:0;
+        margin-bottom:0;
+    }
+    .postContent{ width:100%;}
+    .postShow_header1{display:none;}
+    .postShow_header2{margin-top:10px; margin-bottom:10px;}
+    .fileWrap{width:0;}
+    .form-horizontal .form-group{margin-left:0; margin-right:0;}
+    .form-group textarea { margin-left:0; width:100%;}
+    .form-group{margin-bottom:0;}
+    .sendButton{
+        margin-left:0; float:right;
+        height:45px; width:85px;
+        margin-top:15px;
+    }
+}

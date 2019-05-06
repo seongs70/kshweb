@@ -15,11 +15,11 @@
             return false;
         }
     }
-    
+
 </script>
 <body style="background-color:gainsboro;">
     <div class="register_wrap">
-    <a href="/home/"><img src="/images/logo.png"></a>
+    <a href="/"><img src="/images/logo.png"></a>
         <form method="post" action="{{ route('users.passwordFindUpdate') }}" onsubmit="return tocheckpw1()" class="register_form">
            {!! csrf_field() !!}
             <input type="hidden" name="userId" value="<?php echo $user?>">
@@ -44,6 +44,6 @@
             </div>
                 <a href="/" class="btn btn-primary register_cancle"> 취소하기</a>
         </form>
-    </div>    
+    </div>
 </body>
 @stop

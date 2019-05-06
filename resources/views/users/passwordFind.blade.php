@@ -21,11 +21,11 @@
 <link href="{{ asset('/css/users.css') }}" rel="stylesheet" type="text/css" >
 <body style="background-color:gainsboro;">
 <div class="register_wrap">
-    <a href="/home/"><img src="/images/logo.png"></a>
+    <a href="/"><img src="/images/logo.png"></a>
     <form method="post" action="{{ route('users.passwordFind') }}" onsubmit="return tocheckpw1()" class="register_form">
        {!! csrf_field() !!}
         <input type="hidden" name="_token" value="{{ csrf_token() }}">
-        <div class="" style="margin-top :50px;">
+        <div>
             <label >아이디</label>
             <input type="text" name="userId" id="userId" value="{{ old('userId')}}" class="form-control"/>
             @if ($errors->has('userId'))

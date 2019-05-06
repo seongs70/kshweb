@@ -1,15 +1,5 @@
 @extends('layouts.master')
-<style>
-    .wrap{display:none;}
-</style>
-@section('content')
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-</head>
-<link href="{{ asset('/css/users.css') }}" rel="stylesheet" type="text/css" >
+@section('script')
 <script type="text/javascript">
     function tocheckpw1() {
         var pw = document.getElementById("password").value;
@@ -25,11 +15,12 @@
       alert(msg);
     }
 </script>
-</html>
-<body style="background-color:gainsboro;">
+<link href="{{ asset('/css/users.css') }}" rel="stylesheet" type="text/css" >
+@endsection
+@section('content')
 <div class="register_wrap">
     <div class="logo">
-        <a href="/home/"><img src="/images/logo.png"></a>
+        <a href="/"><img src="/images/logo.png"></a>
     </div>
     <form method="post" action="{{ route('users.loginStore') }}" onsubmit="return tocheckpw1()" class="register_form">
        {!! csrf_field() !!}
@@ -60,7 +51,9 @@
             <input type="submit" value="로그인" class="btn btn-primary register_sumit">
         </div>
             <a href="/" class="btn btn-primary register_cancle">뒤로가기</a>
-
+            <a href="/auth/naver"><div class="naver_login2" ></div></a>
+            <h5> 네이버 계정 : rkdtkdcj5071 // soon1223</h5>
+            <div class="m_user"><span><a href="/auth/register">회원가입</a></span><span><a href="/auth/passwordFind">비밀번호 찾기</a></span><span><a href="/auth/delete">회원탈퇴</a></span></div>
     </form>
 </div>
 </body>

@@ -1,13 +1,30 @@
-@extends('layouts.master')  
+@extends('layouts.master')
 @section('content')
 
 <link href="{{ asset('/css/postIndex.css') }}" rel="stylesheet" type="text/css" >
+<script>
+$(document).ready(function(e) {
+    var winWidth=$(window).width();
+    if(winWidth<960){
+        $( '.thumbnailWrap ul li, .postIndex_thumbnail ul' ).css("width","96%" );
+        // $( '.postIndex_thumbnail' ).css("width","100%" );
+        $( '.postIndex_thumbnail ul li:nth-child(2)' ).css("width","96%" );
+        $( '.postIndex_thumbnail ul li:nth-child(1)' ).css("width","100%" );
+        $( '.postIndex_thumbnail' ).css("width","96%" );
+        $( '.serarch_thumbail ul' ).css("margin-bottom","0px" );
+
+    }
+});
+</script>
+<div class="m_notice">
+    <span>{{ $boardName }}</span>
+</div>
 <div class="container">
     <div class="postIndex_boardName">
         <h4>{{ $boardName }}</h4>
-    </div> 
+    </div>
     <article id=postIndex_article>
-        <div class="postIndex_postList">         
+        <div class="postIndex_postList">
             @if(empty($find) and empty($search))
                 @if($boardTypeCode !== '2')
                     <ul class="hoh">
@@ -15,16 +32,16 @@
                         <li>제 목</li>
                         <li style="width: 100px;">닉네임</li>
                         <li>작성일</li>
-                        <li>조회수</li>  
+                        <li>조회수</li>
                     </ul>
-                @endif        
+                @endif
                 @forelse($posts as $post)
-                   
-                    @if($post ->thumbnail == null) 
+
+                    @if($post ->thumbnail == null)
                         <ul>
                             <li>{{ $postNumber = $post->postNumber }}</li>
                             <li>
-                                <form method="get" class="postIndex_name" action="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">   
+                                <form method="get" class="postIndex_name" action="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">
                                     <input type="hidden" id="boardTypeCode" name="boardTypeCode" value="<?php echo $boardTypeCode; ?>">
                                     <input type="hidden" id="viewCount" name="viewCount" value="1">
                                     <input type="hidden" id="boardNumber" name="boardNumber" value="<?php echo $boardNumber; ?>">
@@ -46,12 +63,22 @@
                                 </form>
                             </li>
                             <li>{{$post->user['nickName']}}</li>
-                            <li>{{ $post->created_at->diffForHumans() }}</li> 
+                            <li>{{ $post->created_at->diffForHumans() }}</li>
                             <li>
                                 @if($post -> viewCount == 0)
                                 0
                                 @endif
-                                {{ $post -> viewCount }}
+                                <script>
+                                $(document).ready(function(e) {
+                                    var winWidth=$(window).width();
+                                    if(winWidth<960){
+                                        $("p").text("조회 ");
+                                    }
+                                });
+                                </script>
+
+                                <p id="view"></p>{{ $post -> viewCount }}
+
                             </li>
                         </ul>
                     @else
@@ -74,7 +101,7 @@
                         </style>
                         <div class="displaynone">{{ $postNumber = $post->postNumber  }}</div>
                         <div class="postIndex_thumbnail">
-                            <ul>               
+                            <ul>
                                 <li>
                                     <div class="thumbnailWrap">
                                         <form method="get" action="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">
@@ -102,27 +129,27 @@
                         </div>
                     @endif
                 @empty
-                    <br><p class="text-center text-danger">글이 없습니다.</p>  
+                    <br><p class="text-center text-danger">글이 없습니다.</p>
                 @endforelse
             @endif
             @if($boardTypeCode === '2')
                 <style>#abs ul li{display:none;}</style>
             @endif
             @if(isset($searchs))
-                <div class="postIndex_postList">    
+                <div class="postIndex_postList">
                     <ul class="hoh">
                         <li>&nbsp;</li>
                         <li>제 목</li>
                         <li style="width: 100px;">닉네임</li>
                         <li>작성일</li>
-                        <li>조회수</li>  
+                        <li>조회수</li>
                     </ul>
                     @forelse($searchs as $search)
-                        @if($search ->thumbnail == null)  
+                        @if($search ->thumbnail == null)
                             <ul>
                                 <li>{{ $serchPostNumber = $search->postNumber }}</li>
                                 <li>
-                                    <form method="get" class="postIndex_name" action="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $serchPostNumber]) }}">   
+                                    <form method="get" class="postIndex_name" action="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $serchPostNumber]) }}">
                                         <input type="hidden" id="boardTypeCode" name="boardTypeCode" value="<?php echo $boardTypeCode; ?>">
                                         <input type="hidden" id="viewCount" name="viewCount" value="1">
                                         <input type="hidden" id="boardNumber" name="boardNumber" value="<?php echo $boardNumber; ?>">
@@ -133,24 +160,24 @@
                                                 {{$search->postName}}
                                                 @if($comment->where('postNumber',$serchPostNumber)->sum('statusValue') !== 0)
                                                     [{{ $comment->where('postNumber',$serchPostNumber)->sum('statusValue') }}]
-                                                @else 
+                                                @else
                                                 @endif
                                             </button>
                                         </a>
                                     </form>
                                 </li>
                                 <li>{{ $search->user['nickName'] }}</li>
-                                <li>{{ $search->created_at->diffForHumans() }}</li> 
+                                <li>{{ $search->created_at->diffForHumans() }}</li>
                                 <li>
                                     @if($search -> viewCount == 0)
                                     0
                                     @endif
                                     {{ $search -> viewCount }}
                                 </li>
-                            </ul>    
+                            </ul>
                         @else
                             <style>
-                            .hoh{display: none;}                
+                            .hoh{display: none;}
                             .serarch_thumbail ul{
                                 width:360px;
                                 float:left; border-bottom:2px solid #ddd;
@@ -167,7 +194,7 @@
                             </style>
                             <div class="displaynone">{{ $postNumber = $search->postNumber}}</div>
                             <div class="postIndex_thumbnail serarch_thumbail">
-                                <ul>          
+                                <ul>
                                     <li>
                                         <div class="thumbnailWrap">
                                             <form method="get" action="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">
@@ -196,12 +223,12 @@
                         @endif
                     @empty<br><br><br><br>
                         <style>
-                        .hoh{display: none;}    
+                        .hoh{display: none;}
                         </style>
                         <h5 style="text-align:center;">검색결과가 없습니다.</h5>
                     @endforelse
                 </div>
-            @endif    
+            @endif
         </div>
         <div class="writeSearch_wrap">
             @if(Auth::user())
@@ -224,21 +251,21 @@
                     <input type="hidden" name="boardName" value="{{ $boardName }}">
                     <input type="hidden" id="boardTypeCode" name="boardTypeCode" value="<?php echo $boardTypeCode; ?>">
                     <input type="text"  name="search" placeholder="검색" style="height:34px; ">
-                    <button type="submit" class="btn btn-primary" style="margin-top: -5px;">검색</button>
+                    <button type="submit" class="btn btn-primary" >검색</button>
                 </form>
             </div>
-        </div> 
+        </div>
     </article>
     @if(isset($searchs))
         @if($searchs->count())
             <div class="text-center">
                 {!! $searchs->appends(Request::except('page'))->render() !!}
             </div>
-        @endif    
+        @endif
     @else
         <div class="text-center">
             {!! $posts->appends(Request::except('page'))->render() !!}
         </div>
     @endif
-</div>    
+</div>
 @stop

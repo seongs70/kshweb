@@ -4,11 +4,26 @@
 <link href="{{ asset('/css/postShowQ&A.css') }}" rel="stylesheet" type="text/css" >
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.css" rel="stylesheet">
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script> 
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script> 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
 <script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.11/summernote.js"></script>
 <script src="{{ asset('/js/summernote-ko-KR.js') }}"></script>
 <script src="{{ asset('/js/postShowQ&A.js') }}"></script>
+<script>
+$(document).ready(function(e) {
+    var winWidth=$(window).width();
+    if(winWidth<960){
+      $( '.postContent img' ).css("width","100%").css("height","inherit");
+      $('#container2').css("margin-bottom","0");
+    }
+});
+</script>
+<div class="m_notice">
+    @forelse($posts as $post)
+        <span>{{ $post->postName }}</span>
+    @empty
+    @endforelse
+</div>
 <div class="container" id="container">
     @forelse($posts as $post)
         <div class="postShow_header1">
@@ -48,7 +63,7 @@
               .click(function() { alert("World"); })
               .prop("disabled", true);
           });
-        </script> 
+        </script>
     @endif
     @forelse($vote as $voteFunction)
         @if($voteFunction->userNumber == $currentUserNumber)
@@ -58,10 +73,10 @@
                   .click(function() { alert("World"); })
                   .prop("disabled", true);
               });
-            </script> 
+            </script>
         @endif
     @empty
-    @endforelse    
+    @endforelse
     <div class="voteFunction">
         <ul>
             <form method="get" action="{{ route('posts.vote', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="form-horizontal">
@@ -90,7 +105,7 @@
             </form>
         </ul>
     </div>
-   
+
     <div class="text-right action__post">
         @can('update', $post)
             <a href="{{ route('posts.edit', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" >
@@ -114,28 +129,28 @@
                     <input type="hidden" name="_method" value="delete">
                     <button class="btn btn-default" type="submit">글 삭제</button>
             </form>
-           
+
         @endcan
             <a href="{{route('posts.index', ['boardNumber' => $boardNumber, 'boardTypeCode' => $boardTypeCode])}}" class="btn btn-default">
                 글 목록
             </a>
-       <div class="fileWrap">   
+       <div class="fileWrap">
         @forelse($files as $file)
         <form method="get" action="{{ route('posts.filedownload', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="btn btn-warning">
             {!! csrf_field() !!}
             <a href="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">
             <button type="submit">
-            {{ $file->fileName }} 
+            {{ $file->fileName }}
             <input type="hidden" name="fileDownload" value="{{ $file->fileName }}"></button></a>
         </form>
         @empty
-        @endforelse      
-        </div>  
+        @endforelse
+        </div>
     </div>
     </div>
     @forelse($parentPosts as $parentPost)
-        <div class="container" id="container2">      
-            <div class="rePost_wrap">   
+        <div class="container" id="container2">
+            <div class="rePost_wrap">
                 <div class="postShow_header2">
                    <ul>
                        <li>{{ $parentPost->user['nickName']}}</li>
@@ -169,9 +184,10 @@
                     @endcan
                 </div>
             </div>
-        </div>     
+        </div>
     @empty
-    @endforelse                                                                                                                                      
+    @endforelse
+    @if(Auth::user())
     <div class="editWrap">
         <form method="post" action="{{ route('posts.store', ['boardNumber' => $boardNumber]) }}" enctype="multipart/form-data">
             {!! csrf_field() !!}
@@ -183,8 +199,8 @@
               <textarea name="postContent" id="postContent" rows="10" class="form-control" style="margin-bottom:0;">{{ old('postContent') }}</textarea>
               <script>
                     $(document).ready(function() {
-                      $('#postContent').summernote({
-
+                        $('#container2').css("margin-bottom","10px");
+                        $('#postContent').summernote({
                         minHeight: 200,
                         lang: 'ko-KR' // default: 'en-US'
                       });
@@ -196,6 +212,6 @@
                 <button type="submit" class="btn btn-primary" style="float:right;">답글쓰기</button>
             </div>
         </form>
-    </div>                                     
+    </div>
+    @endif
 @stop
-  

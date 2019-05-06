@@ -1,9 +1,25 @@
 @extends('layouts.master')
+@section('script')
+    <script src="{{ asset('/js/postShow.js') }}"></script>
+    <link href="{{ asset('/css/postShow.css') }}" rel="stylesheet" type="text/css" >
+    <script>
+    $(document).ready(function(e) {
+        var winWidth=$(window).width();
+        if(winWidth<960){
+          $( '.postContent img' ).css("width","100%");
+
+        }
+    });
+    </script>
+@endsection
 
 @section('content')
-<script src="//code.jquery.com/jquery.min.js"></script>
-<link href="{{ asset('/css/postShow.css') }}" rel="stylesheet" type="text/css" >
-<script src="{{ asset('/js/postShow.js') }}"></script>
+<div class="m_notice">
+    @forelse($posts as $post)
+        <span>{{ $post->postName }}</span>
+    @empty
+    @endforelse
+</div>
 <div class="container" id="container">
     <!-- 게시글정보 받아와서 문자배열처 -->
     @forelse($posts as $post)
@@ -45,7 +61,7 @@
               .click(function() { alert("World"); })
               .prop("disabled", true);
           });
-        </script> 
+        </script>
     @endif
     <!-- 중복투표 방지 -->
     @forelse($vote as $voteFunction)
@@ -56,10 +72,10 @@
                   .click(function() { alert("World"); })
                   .prop("disabled", true);
               });
-            </script> 
+            </script>
         @endif
     @empty
-    @endforelse    
+    @endforelse
     <div class="voteFunction">
         <ul>
             <form method="get" action="{{ route('posts.vote', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="form-horizontal">
@@ -112,25 +128,25 @@
                     <button class="btn btn-default" type="submit">글 삭제</button>
             </form>
         @endcan
-        
+
         <a href="{{route('posts.index', ['boardNumber' => $boardNumber, 'boardTypeCode' => $boardTypeCode])}}" class="btn btn-default">글 목록</a>
     </div>
-    <div class="fileWrap">       
+    <div class="fileWrap">
         @forelse($files as $file)
             <form method="get" action="{{ route('posts.filedownload', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="btn btn-warning">
                 {!! csrf_field() !!}
                 <a href="{{ route('posts.show', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">
-                <button type="submit">{{ $file->fileName }}</button> 
+                <button type="submit">{{ $file->fileName }}</button>
                 <input type="hidden" name="fileDownload" value="{{ $file->fileName }}">
                 </a>
             </form>
         @empty
-        @endforelse      
-    </div>        
+        @endforelse
+    </div>
     <div class="com"><h4>댓글</h4></div>
     <!--댓글 인덱스-->
     <div class="comment_Wrap">
-        <div class="container__comment"> 
+        <div class="container__comment">
             @forelse($comments as $comment)
                 @if($comment->parentCommentNumber==null)
                     @if($comment->user['userId'] == $currentUser)
@@ -143,31 +159,31 @@
                                          {!! csrf_field() !!}
                                         <input type="hidden" name="commentNumber" value="<? echo $comment->commentNumber; ?>">
                                         <input type="text" name="commentContent">
-                                        <button class="editComment" type="submit">댓글 수정</button>      
+                                        <button class="editComment" type="submit">댓글 수정</button>
                                         </form>
                                         <div class="commentCancle"><a>|취소</a></div>
                                     </div>
-                                </div>    
+                                </div>
                             @endcan
                         </div>
-                    @endif      
+                    @endif
                     <div class="commentRegister">
                         @if($comment->user['userId'] == $currentUser)
                             @can('delete', $comment)
-                          
+
                                 <form method="post" style="display:inline-block; float:right;" action="{{ route('posts.commentDelete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber, 'commentNumber' => $comment->commentNumber]) }}">
                                      {!! csrf_field() !!}
                                     <input type="hidden" name="commentNumber" value="{{ $comment->commentNumber }}">
-                                    <button class="editComment" type="submit">댓글삭제</button>      
+                                    <button class="editComment" type="submit">댓글삭제</button>
                                 </form>
-                            @endcan     
-                        @endif 
+                            @endcan
+                        @endif
                         <ul>
                            <li>{{ $comment->user['nickName']}}</li>
                            <li>{{ $comment->created_at->diffForHumans()}}</li>
                         </ul>
                         <div class="commentContent1">{{ $comment->commentContent}}</div>
-                    </div> 
+                    </div>
                     @forelse($comments as $repliy)
                         @if($repliy->parentCommentNumber==$comment->commentNumber)
                             <div class="commentRepliy commentRegister">
@@ -178,7 +194,7 @@
                                 </ul>
                                 <div class="commentContent1 commentContent2">{{ $repliy->commentContent}}</div>
                             </div>
-                        @endif   
+                        @endif
                     @empty
                     @endforelse
                     @if($currentUser)
@@ -194,20 +210,20 @@
                                 <input type="hidden" id="statusValue" name="statusValue" value="1">
                             <div class="form-group ReCom" {{ $errors->has('commentContent') ? 'has-error' : '' }}>
                                 <div class="recomment2"></div>
-                                <textarea name="commentContent" class="form-control commentText" 
+                                <textarea name="commentContent" class="form-control commentText"
                                 style="width:770px; margin-left:53px; min-height:73px; float:left; clear:both;" class="form-control reComment">{{-- old('commentContent') --}}</textarea>
                                 {{--!! $errors->first('commentContent', '<span class="form-error">:message</span>!!--}}
-                                <button type="submit" class="btn btn-primary btn-sm sendButton" style="margin-bottom:15px; height:73px; 
+                                <button type="submit" class="btn btn-primary btn-sm sendButton" style="margin-bottom:15px; height:73px;
                                 width:100px; float:left;">
                                 전송하기
                                 </button>
-                                
+
                                 <div class="commentError" style="position:absolute; bottom:-5%; color:coral; left:7.5%">{{ $errors->first('commentContent') }}</div>
                             </div>
                         </form>
                         <div class="repliyCancle"><a>취소</a></div>
                     </div>
-                @endif 
+                @endif
             @empty
             @endforelse
         </div>
@@ -224,21 +240,18 @@
                             <input type="hidden" id="boardNumber" name="boardNumber" value="<?php echo $boardNumber; ?>">
                             <input type="hidden" id="postNumber" name="postNumber" value="<?php echo $postNumber; ?>">
                             <input type="hidden" id="statusValue" name="statusValue" value="1">
-                        <div class="form-group" {{-- $errors->has('commentContent') ? 'has-error' : '' --}}">
-                            <textarea name="commentContent" class="form-control commentText" 
-                            style="width:809px; margin-left:29px; min-height:73px; float:left;">{{-- old('commentContent') --}}</textarea>
+                        <div class="form-group" {{-- $errors->has('commentContent') ? 'has-error' : '' --}}>
+                            <textarea name="commentContent" class="form-control commentText">{{-- old('commentContent') --}}</textarea>
                             {{--!! $errors->first('commentContent', '<span class="form-error">:message</span>!!--}}
-                            <button type="submit" class="btn btn-primary btn-sm sendButton" style="margin-bottom:15px; height:73px; 
-                            width:100px; float:left;">
+                            <button type="submit" class="btn btn-primary btn-sm sendButton">
                             전송하기
                             </button>
                             <div class="commentError" style="color:coral; clear:both; margin-left:30px;">{{ $errors->first('commentContent') }}</div>
-                        </div> 
+                        </div>
                     </form>
                 </div>
             @endif
         </div>
     </div><!-- comment_Wrap -->
-</div><!-- container -->                                
+</div><!-- container -->
 @stop
-  

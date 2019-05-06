@@ -1,36 +1,36 @@
     a:hover{ color:darkorange;}
     ol, ul {margin-bottom:0px;}
-    .container {position:relative;}    
-    .displaynone {display:none;}  
+    .container {position:relative;}
+    .displaynone {display:none;}
     .postIndex_boardName h4{
-        font-size:25px; margin-top:60px; 
+        font-size:25px; margin-top:60px;
         margin-left:200px; margin-bottom:20px;
-        font-weight:bold; display:inline-block; 
+        font-weight:bold; display:inline-block;
         padding-bottom:12px; border-bottom:5px solid #dedede;
         text-shadow: 0px 1px 1px #dedede;
     }
     #postIndex_article {
-        height:520px; 
+        height:520px;
     }
     .postIndex_postList ul {
         width:760px; margin:0 auto;
-        
+
     }
     .hoh li{
         font-size:16px; font-weight: bold;
         border-top:1px solid #ddd;
-        color:#fff; background-color: deepskyblue;
-       
+        color:#fff; background-color: black;
+
     }
     .postIndex_postList ul:first-child li:first-child{ border-top-left-radius:3px;  border-bottom-left-radius:3px;}
     .postIndex_postList ul:first-child li:last-child{ border-top-right-radius:3px;  border-bottom-right-radius:3px;}
     .postIndex_postList ul li{
         min-height:44px;
         float:left; text-align:center;
-        font-size:14px; padding:15px 0; 
+        font-size:14px; padding:15px 0;
         border-bottom:1px solid #ddd;
          white-space: nowrap; overflow: hidden;
-        
+
     }
     .postIndex_postList ul li button{
         text-overflow:ellipsis; white-space:nowrap;
@@ -44,16 +44,16 @@
     .postIndex_postList ul li:nth-child(2){width:380px; text-align: left;}
     .postIndex_postList ul li:nth-child(3){width:100px;
         text-overflow:ellipsis; white-space:nowrap;
-        word-wrap:normal; 
+        word-wrap:normal;
         overflow:hidden; margin:inherit;
-       
-    
+
+
     }
-    
+
     .postIndex_postList ul li:nth-child(4){width:100px;}
     .postIndex_postList ul li:last-child{width:80px;}
     .searchBox, .writeBox  {
-         display:inline-block; float:right; 
+         display:inline-block; float:right;
          margin-top:40px; margin-bottom:40px;
     }
     .writeBox {margin-left:50px;}
@@ -69,17 +69,17 @@
     }
 
 /*    .postIndex_thumbnail ul:first-child{margin-top:50px;}*/
-    .postIndex_thumbnail ul li img 
+    .postIndex_thumbnail ul li img
     {
         position: absolute; width:360px;
         max-width: 100%;width: auto;
         height: auto;margin: auto;
         top: 0;bottom: 0;
         left: 0;right: 0;
-            
+
     }
     .postIndex_thumbnail ul li:first-child{
-        
+
     }
     .postIndex_thumbnail ul li:first-child:hover img{
        transform:scale(1.1); transition:all 1.2s;
@@ -89,7 +89,7 @@
         margin-bottom:8px; margin-top:12px;
         text-align: left; width:180px;
             font-family: fantasy;
-        
+
     }
     .postIndex_thumbnail ul li:nth-child(3){
         font-size:14px; margin-bottom:4px;
@@ -103,4 +103,62 @@
         width:360px; height:270px;
         overflow: hidden; position:relative;
     }
-    
+    .m_notice{display:none;}
+    p{display:inline;}
+
+@media screen and (max-width:960px) {
+    .m_notice {
+        width:100%; padding:4.5vw 0;
+        background-color:white;
+        box-shadow: 0 1px 7px 0 rgba(0,0,0,.15);
+        display:block;
+    }
+    .m_notice span{
+        margin-left:5vw; font-size:4.5vw;
+        font-weight:bold;
+     }
+    .container{height:0; padding-right:0; padding-left:0;}
+    .postIndex_boardName h4{ display:none;}
+    .hoh {display:none;}
+    .postIndex_postList ul{width:100%; border-bottom:1px solid #dedede; height:87px;}
+    .postIndex_postList ul li{ border:none; padding: 0px 0; min-height:0; }
+    .postIndex_postList ul li:first-child{display:none;}
+    .postIndex_postList ul li:nth-child(2){clear:both; font-size:17px; padding-top:20px;}
+    .postIndex_postList ul li:nth-child(3), .postIndex_postList ul li:nth-child(4){width:65px;}
+    .postIndex_postList ul li:nth-child(3), .postIndex_postList ul li:nth-child(4), .postIndex_postList ul li:last-child{
+        color:darkgrey; text-align: left;
+        padding-bottom:20px; margin-top:3px;
+
+    }
+    #postIndex_article{height:0;}
+    .postIndex_postList ul li:nth-child(2) {width:100%;}
+    .postIndex_postList ul li button{width:100%;}
+    #view{display:inline;}
+    .writeSearch_wrap{width:96vw;}
+    .searchBox{ position:relative; width:100%;}
+
+    .searchBox select, .searchBox button, .searchBox input, .searchBox textarea{position:absolute; }
+
+    .searchBox select{left:0; width:70px;}
+    .searchBox input{left:75px; width:170px; border: 1px solid #ccc;}
+    .searchBox button{left:250px; width:60px; margin-top:0px;}
+
+
+    .postIndex_thumbnail{width:90%; margin-left:4vw;}
+    .postIndex_postList{}
+    .postIndex_postList ul:first-child li:nth-child(2){width:100%;}
+    .postIndex_postList ul{width:100%;}
+    .postIndex_thumbnail ul{position:relative;}
+    .postIndex_thumbnail ul{ margin: 0 0 0 0;}
+    .postIndex_thumbnail ul li:nth-child(2){margin-top:0; margin-bottom:0;}
+    .postIndex_thumbnail ul li:first-child{display:block;  position:absolute; top:0; width:0;}
+
+    .postIndex_postList ul{width:95%;}
+    .thumbnailWrap{width:100%; height:87px;}
+    .postIndex_thumbnail ul li img{ width:70px; height:70px; top:50%; margin:0; right:0%; left:inherit;
+    margin-top:-35px;}
+    .postIndex_thumbnail ul li:nth-child(3){margin-right:0;}
+    .writeSearch_wrap {margin-left:4vw;}
+    .postIndex_thumbnail ul li{ z-index:9999; position:relative;}
+    .writeBox { margin-top:2vw; margin-bottom:0px; margin-right:4vw;}
+}

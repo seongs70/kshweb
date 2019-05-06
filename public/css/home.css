@@ -1,7 +1,5 @@
 @charset "utf-8";
 html, body { height:100%; }
-
-@media screen and (min-width:1020px) {
     .container{
       width:100%; height:463px;
       background-image:url("/images/background.jpg"); background-position:bottom;
@@ -201,5 +199,34 @@ html, body { height:100%; }
         padding:14px;
     }
     .boardSetting{ width:150px;}
-
+@media screen and (max-width:960px) {
+    ul{margin-bottom:0;}
+    .slideshow{height:145vw;}
+    .slideshow ul li:first-child a {display:none;}
+    .slideshow ul li:first-child img:first-child, .slidenav, .slideshow ul li:nth-child(2), .slideshow ul li:last-child, .main3, .main4 {
+        display:none;
+    }
+    .slideshow ul li {
+        height:146vw;
+    }
+    .git {
+        width:41vw; left:50%;
+        margin-left: -20.5vw; bottom:5%;
+    }
+    .main1 {margin-top:0; height:0;}
+    .main1, .main2{width:100%;}
+    .main1 ul li{width:100vw; height:79vw;}
+    .main1 a:nth-child(2),.main1 a:last-child, .main2 a:nth-child(2),.main2 a:last-child, .main2 ul li:nth-child(2), .main2 ul li:last-child, .bg3 ul:last-child li:nth-child(2){display:none;}
+    .bg3 {clear:none; height:90vw;}
+    .bg3_1 { padding-top:0px; width:100%; top:-25%;}
+    .bg3_1 ul {display:block;}
+    .bg3 ul:first-child {left:0%; margin-right:0;}
+    .bg3 img {margin: 0 0; width:18vw;}
+    .bg3 ul:first-child, .bg3 ul:last-child{left:0; width:100%;}
+    .bg3 ul:first-child li {padding-left: 12vw;}
+    .bg3 ul:last-child{ padding-top:33vw;}
+    .bg3 ul:last-child li:first-child{text-align:center; font-size:4.5vw; margin:0 auto; margin-top:5vw;}
+    .bg_01{margin-bottom:0;}
+    .main2 {clear:both; height:0;}
+    .main2 ul li {}
 }

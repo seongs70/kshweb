@@ -1,10 +1,10 @@
     body {background-color:#ebeef1;}
     .commentEditWrap{display:none;}
     .repliy{display:none;}
-    .commentRepliy { margin-left:100px;}     
+    .commentRepliy { margin-left:100px;}
     #container{
         width:980px; background-color:white;
-        box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);margin-top:60px; 
+        box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);margin-top:60px;
         min-height:740px; margin-bottom:60px;
         }
     .postShow_header1  {margin-top:30px; height:40px;}
@@ -28,10 +28,10 @@
     .postContent{min-height:300px;}
     .voteFunction {
         margin:0 auto; width:143px;
-        margin-top:20px;  
+        margin-top:20px;
     }
     .voteFunction ul li {
-        float:left; margin-bottom:50px; border:none; 
+        float:left; margin-bottom:50px; border:none;
         box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
     }
     .voteFunction form {display: inline-block; float:left;}
@@ -54,7 +54,7 @@
     font-weight:bold; color:white;
     text-overflow:ellipsis; white-space:nowrap;
     word-wrap:normal; max-width:180px;
-    overflow:hidden; text-align:left;       
+    overflow:hidden; text-align:left;
     }
     .comment_Wrap{clear:both; background-color:#eee;}
     .com{
@@ -62,18 +62,18 @@
         height:30px;
     }
     .sendButton{margin-left:11px;}
-    .rePostNumber{display:none;} 
+    .rePostNumber{display:none;}
     .rePost_wrap form, .action__post{ display:inline-block;}
     .rePost_wrap {clear:both;}
     #container2{
-    clear:both; width:980px; 
+    clear:both; width:980px;
     background-color: white; box-shadow: 0 1px 3px 0 rgba(0,0,0,.15);
     margin-top: 60px;  background-color:#eee;
     margin-bottom: 50px;
     }
     .rePostContent{
         min-height:140px; overflow: auto;
-       
+
      }
     .editWrap{
         width:980px; margin:0 auto;
@@ -81,5 +81,39 @@
      }
      .postShow_header2{
          margin-top:20px; border-bottom: 2px solid white;
-        padding-bottom:40px; 
+        padding-bottom:40px;
      }
+     .m_notice {display:none;    }
+@media screen and (max-width:960px) {
+    .m_notice {
+     width:100%; padding:4.5vw 0;
+     background-color:white;
+     box-shadow: 0 1px 7px 0 rgba(0,0,0,.15);
+     display:block;
+    }
+    .m_notice span{
+     margin-left:5vw; font-size:4.5vw;
+     font-weight:bold;
+    }
+    #container{
+     width:100%;     margin-top:0;
+     margin-bottom:0;
+    }
+    .postContent{ width:100%;}
+    .postShow_header1{display:none;}
+    .postShow_header2{margin-top:10px; margin-bottom:10px;}
+    .fileWrap{width:0;}
+    .form-horizontal .form-group{margin-left:0; margin-right:0;}
+    .form-group textarea { margin-left:0; width:100%;}
+    .form-group{margin-bottom:0;}
+    .sendButton{
+     margin-left:0; float:right;
+     height:45px; width:85px;
+     margin-top:15px;
+    }
+    .postContent img{width:100%;}
+    #container2{width:100%; margin-top:0; margin-bottom:15px;}
+    .action__post{margin: 10px 0 20px 0;}
+    .note-toolbar{display:none;}
+    .editWrap{width:100%; padding:10px; margin-bottom:50px;}
+}

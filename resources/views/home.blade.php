@@ -14,7 +14,7 @@
 @section('content')
 <div class="slideshow">
     <ul>
-        <li><img src="images/background1.jpg"><a class="btn btn-default git" href="https://github.com/seongs70/kshweb"target="_blank">코드 확인</a>
+        <li><img src="images/background1.jpg"><img src="images/m_background1.jpg"><a class="btn btn-default git" href="https://github.com/seongs70/kshweb"target="_blank">코드 확인</a>
         </li>
         <li><a href="http://user156.dothome.co.kr/html/"target="_blank"><img src="images/background2.jpg">
             </a>

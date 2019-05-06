@@ -3,7 +3,7 @@
     <header>
     {{-- PC버전 --}}
     <div class="PC_loginWrap">
-        <div class="login" id="loginOff">
+        <div class="login loginOff">
           <a href="/auth/naver"><div class="naver_login" ></div></a>
             <a href="/auth/delete">회원탈퇴</a>
             <a href="/auth/passwordFind">비밀번호 찾기</a>
@@ -14,14 +14,14 @@
         <!--유저가 로그인 했을시-->
         <a id="boardSetting" class="btn btn-default" href="/boards/">게시판 관리</a>
         @if(Auth::user())
-        <div class="login" id="loginOn">
+        <div class="login loginOn">
             <a href="/auth/logout" >로그아웃</a>
             <span>{{ Auth::user()->provider }}에서 로그인&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{ Auth::user()->nickName }}</span>
         </div>
         <script>
             //로그인 여부로 보여주는 화면처리
-            $('#loginOff').css('display', 'none');
-            $('#loginOn').css('display', 'block');
+            $('.login').css('display', 'none');
+            $('.loginOn').css('display', 'block');
         </script>
         @endif
     </div>
@@ -34,7 +34,21 @@
     <div class="boardList_wrap">
         <div class="boardList">
             <div class="m_login_icon">
-                <a href="/auth/login"><img src="/images/m_login.png" /><span>로그인</span></a><img class="m_close_btn" src="/images/m_x_button.png" />
+                <a href="/auth/login"><img src="/images/m_login.png" />
+                    <span class="loginOff">로그인</span>
+                    @if(Auth::user())
+                        <script>
+                            //로그인 여부로 보여주는 화면처리
+                            $('.loginOff').css('display', 'none');
+                            $('.loginOn').css('display', 'block');
+                        </script>
+                    <a href="/auth/logout" ><span class="loginOff">로그아웃</span></a>
+                    @endif
+                </a>
+                <img class="m_close_btn" src="/images/m_x_button.png" />
+            </div>
+            <div class="m_board">
+                <a href="/boards/">게시판 관리</a>
             </div>
             <div class="boardNameBtn_wrap">
                 <!--게시판 생성 반복문-->

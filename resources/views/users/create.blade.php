@@ -20,11 +20,11 @@
             return false;
         }
     }
-    
+
 </script>
 <body style="background-color:gainsboro;">
     <div class="register_wrap">
-        <a href="/home/"><img src="/images/logo.png"></a>
+        <a href="/"><img src="/images/logo.png"></a>
         <form method="post" action="{{ route('users.reisterStore') }}" onsubmit="return tocheckpw1()" class="register_form">
            {!! csrf_field() !!}
             <input type="hidden" name="_token" value="{{ csrf_token() }}">
@@ -82,7 +82,7 @@
             </div>
                 <a href="/" class="btn btn-primary register_cancle">뒤로가기</a>
         </form>
-    </div> 
+    </div>
 </body>
 </html>
 @stop

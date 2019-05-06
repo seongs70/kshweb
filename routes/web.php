@@ -45,11 +45,11 @@ Route::post('auth/register',[
 /* 로그인 */
 Route::get('auth/login', [
     'as' => 'users.login',
-    'uses' => 'UsersController@loginCreate'    
+    'uses' => 'UsersController@loginCreate'
 ]);
 Route::post('auth/login', [
     'as' => 'users.loginStore',
-    'uses' => 'UsersController@loginStore'    
+    'uses' => 'UsersController@loginStore'
 ]);
 
 /* 회원탈퇴 */
@@ -181,7 +181,3 @@ Route::post('boards/{boardNumber}/posts/{postNumber}/{commentNumber}/delete', [
     'as' => 'posts.commentDelete',
     'uses' => 'CommentsController@destroy'
 ]);
-
-
-
-
