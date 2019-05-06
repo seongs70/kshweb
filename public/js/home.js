@@ -63,14 +63,16 @@ var imgNum=0;
 	function autofn(){
 		$('.slidenav__item--next').click();
 	}
+	var winWidth=$(window).width();
+	if(winWidth>960){
      //flip
-	$('.hover').hover(function(){
-		$(this).addClass('flip');
-	},
-	function(){
-		$(this).removeClass('flip');
-	});
-
+		$('.hover').hover(function(){
+			$(this).addClass('flip');
+		},
+		function(){
+			$(this).removeClass('flip');
+		});
+	}
 
 
 

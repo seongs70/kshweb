@@ -343,6 +343,8 @@ section #a2 .profile_arrow {
     .m_notice{display:none;}
     section #a4 .gallery_tap_title_wrap ul {width:481px;}
     #m_gallery_tap {display:none;}
+	.m_design{display:none;}
+	#m_gallery_tap {display:none;}
 @media screen and (max-width:960px) {
     .m_notice {
         width:100%; padding:4.5vw 0;
@@ -359,7 +361,7 @@ section #a2 .profile_arrow {
     section {height:100%; background-color:#dcdcdc;}
     .introduce_wrap1, .introduce_wrap2 {display:none;}
     .m_profile {
-        width:100%; height:90%;
+        width:100%; height:160vw;
         background-image:url(/images/m_profile.jpg);
         background-repeat:no-repeat; background-size:cover;
         }

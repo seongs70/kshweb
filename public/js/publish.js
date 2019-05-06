@@ -84,6 +84,7 @@ $(document).ready(function(e) {
         $('.gallery_frame').css({'display':'block'});
         $('.gallery_tap_title_wrap ul').css({'width':'481px'});
         $('section #a4 .gallery_frame').css({'margin-top':'70px'});
+		$('#m_gallery_tap').css({'display':'none'});
     }
 
 

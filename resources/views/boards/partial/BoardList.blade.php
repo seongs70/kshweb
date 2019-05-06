@@ -22,6 +22,7 @@
             //로그인 여부로 보여주는 화면처리
             $('.login').css('display', 'none');
             $('.loginOn').css('display', 'block');
+            $('.loginOn').css('margin-top', '-22px');
         </script>
         @endif
     </div>

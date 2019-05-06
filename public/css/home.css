@@ -229,4 +229,11 @@ html, body { height:100%; }
     .bg_01{margin-bottom:0;}
     .main2 {clear:both; height:0;}
     .main2 ul li {}
+    .back{display:none;}
+    .panel {
+        width:50vw; height:50vw;
+        margin-left:-25vw; top:40%; margin-top:-25vw;
+    }
+    .panel .front .pad{width:50vw; height:50vw;}
+    .bg_01 h1{bottom:inherit; top:60%;}
 }
