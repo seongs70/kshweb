@@ -83,7 +83,7 @@
          margin-top:20px; border-bottom: 2px solid white;
         padding-bottom:40px;
      }
-     .m_notice {display:none;    }
+     .m_notice {display:none;}
 @media screen and (max-width:960px) {
     .m_notice {
      width:100%; padding:4.5vw 0;

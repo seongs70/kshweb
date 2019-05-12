@@ -85,10 +85,10 @@
        transform:scale(1.1); transition:all 1.2s;
     }
     .postIndex_thumbnail ul li:nth-child(2){
-        font-size:25px; font-weight:500;
+        font-size:18px; font-weight:500;
         margin-bottom:8px; margin-top:12px;
         text-align: left; width:180px;
-            font-family: fantasy;
+
 
     }
     .postIndex_thumbnail ul li:nth-child(3){

@@ -343,8 +343,9 @@ section #a2 .profile_arrow {
     .m_notice{display:none;}
     section #a4 .gallery_tap_title_wrap ul {width:481px;}
     #m_gallery_tap {display:none;}
-	.m_design{display:none;}
+
 	#m_gallery_tap {display:none;}
+		.m_design{display:none;}
 @media screen and (max-width:960px) {
     .m_notice {
         width:100%; padding:4.5vw 0;
@@ -397,6 +398,7 @@ section #a2 .profile_arrow {
     .gallery_tap_title_wrap ul li a{font-size:16px;}
     .gallery_frame {display:none;}
     #m_gallery_tap {display:block;}
+	.m_design{display:block;}
     .m_design ul {background-color:#dcdcdc; margin-bottom:0;}
     .m_design ul:first-child{ height:411vw; }
     .m_design ul:last-child{display:none; height:198vw;}

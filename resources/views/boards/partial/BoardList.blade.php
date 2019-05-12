@@ -12,7 +12,7 @@
             <h5> rkdtkdcj5071 // soon1223<span>네이버 계정</span></h5>
         </div>
         <!--유저가 로그인 했을시-->
-        <a id="boardSetting" class="btn btn-default" href="/boards/">게시판 관리</a>
+        <a id="boardSetting" class="btn btn-default" href="/boards/">게시판 만들기</a>
         @if(Auth::user())
         <div class="login loginOn">
             <a href="/auth/logout" >로그아웃</a>

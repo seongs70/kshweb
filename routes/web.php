@@ -53,6 +53,7 @@ Route::post('auth/login', [
 ]);
 
 /* 회원탈퇴 */
+
 Route::get('auth/delete',[
     'as' => 'users.delete',
     'uses' => 'UsersController@userDestroyCreate'
@@ -90,7 +91,8 @@ Route::get('board/{boardNumber}/', [
     'uses' => 'BoardController@show'
 ]);
 
-Route::get('board/{boardNumber}/delete', [
+
+Route::post('board/delete', [
     'as' => 'board.delete',
     'uses' => 'BoardController@destroy'
 ]);
@@ -113,27 +115,28 @@ Route::post('board/{boardNumber}/update', [
 
 
 ///////////게시글///////////
-//게시글
+//게시글 목록
 Route::get('/boards/{boardNumber}/posts', [
     'as' => 'posts.index',
     'uses' => 'PostController@index'
 ]);
-//게시글 등록
+//글 작성 폼
 Route::get('/boards/{boardNumber}/posts/create', [
     'as' => 'posts.create',
     'uses' => 'PostController@create'
 ]);
-//게시글 등록
+//게시글 등록처리
 Route::post('/boards/{boardNumber}/posts/create', [
     'as' => 'posts.store',
     'uses' => 'PostController@store'
 ]);
-//게시글 등록처리
+//게시글 상세보기
 Route::get('boards/{boardNumber}/posts/{postNumber}', [
     'as' => 'posts.show',
     'uses' => 'PostController@show'
 ]);
-//게시글 수정
+
+//게시글 수정 폼
 Route::get('boards/{boardNumber}/posts/{postNumber}/edit', [
     'as' => 'posts.edit',
     'uses' => 'PostController@edit'
@@ -144,7 +147,7 @@ Route::post('boards/{boardNumber}/posts/{postNumber}/update', [
     'uses' => 'PostController@update'
 ]);
 //게시글 삭제
-Route::get('boards/{boardNumber}/posts/{postNumber}/delete', [
+Route::post('boards/{boardNumber}/posts/{postNumber}/delete', [
     'as' => 'posts.delete',
     'uses' => 'PostController@destroy'
 ]);

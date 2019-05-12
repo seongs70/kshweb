@@ -27,11 +27,9 @@
                 </form>
             </a>
         </div>
-            <!-- <form method="get" action="{{ route('board.delete', ['boardNumber' => $boardNumber])}}" style="display: inline;">
+            <form method="post" action="{{ route('board.delete') }}" style="display: inline;">
                    {!! csrf_field() !!}
-                    <input type="hidden" name="boardNumber" value="{{$boardNumber}}">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
-                    <input type="hidden" name="_method" value="delete"> -->
+                    <input type="hidden" name="boardNumber" value="{{$boardNumber}}" />
                     <button id="budelete" class="btn btn-primary" type="submit">삭제(게시판 삭제 당해서 미작동)</button>
             </form>
     </div>

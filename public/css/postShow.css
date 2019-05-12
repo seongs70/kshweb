@@ -98,6 +98,7 @@
     .form-group textarea{width:809px; margin-left:29px; min-height:73px; float:left;}
     .sendButton{margin-bottom:15px; height:73px;
     width:100px; float:left;}
+    .m_notice{display:none;}
 @media screen and (max-width:960px) {
     .m_notice {
         width:100%; padding:4.5vw 0;

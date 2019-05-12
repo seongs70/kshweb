@@ -119,7 +119,7 @@
             </a>
         @endcan
         @can('delete', $post)
-            <form method="get" action="{{ route('posts.delete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" style="display:inline-block;">
+            <form method="post" action="{{ route('posts.delete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" style="display:inline-block;">
                    {!! csrf_field() !!}
                     <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="boardNumber" name="boardNumber" value="<?php echo $boardNumber; ?>">
