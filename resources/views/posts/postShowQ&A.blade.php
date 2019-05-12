@@ -121,12 +121,10 @@ $(document).ready(function(e) {
             </a>
         @endcan
         @can('delete', $post)
-            <form method="get" action="{{ route('posts.delete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" style="display:inline-block;">
+            <form method="post" action="{{ route('posts.delete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" style="display:inline-block;">
                    {!! csrf_field() !!}
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
                     <input type="hidden" id="boardNumber" name="boardNumber" value="<?php echo $boardNumber; ?>">
                     <input type="hidden" id="postNumber" name="postNumber" value="<?php echo $postNumber; ?>">
-                    <input type="hidden" name="_method" value="delete">
                     <button class="btn btn-default" type="submit">글 삭제</button>
             </form>
 
@@ -173,12 +171,11 @@ $(document).ready(function(e) {
                     </form>
                     @endcan
                     @can('delete', $parentPost)
-                    <form method="get" action="{{ route('posts.delete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">
+                    <form method="post" action="{{ route('posts.delete', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}">
                        {!! csrf_field() !!}
-                        <input type="hidden" name="_token" value="{{ csrf_token() }}">
+
                         <input type="hidden" id="boardNumber" name="boardNumber" value="<?php echo $boardNumber; ?>">
                         <input type="hidden" id="postNumber" name="postNumber" value="<?php echo $rePostNumber; ?>">
-                        <input type="hidden" name="_method" value="delete">
                         <button class="btn btn-primary" type="submit">글 삭제하기</button>
                     </form>
                     @endcan
