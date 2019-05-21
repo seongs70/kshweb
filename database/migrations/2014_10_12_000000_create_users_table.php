@@ -21,7 +21,7 @@ class CreateUsersTable extends Migration
             //이름
             $table->string('name', '30');
             //닉네임
-            $table->string('nickName', '200')->unique();
+            $table->string('nickName', '200');
             //회원 타입
             $table->string('userType', '2');
             //생성 유형

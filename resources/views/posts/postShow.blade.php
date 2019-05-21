@@ -78,7 +78,7 @@
     @endforelse
     <div class="voteFunction">
         <ul>
-            <form method="get" action="{{ route('posts.vote', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="form-horizontal">
+            <form method="post" action="{{ route('posts.vote', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="form-horizontal">
                 {!! csrf_field() !!}
                 <input type="hidden" id="userNumber" name="userNumber" value="<?php echo $currentUserNumber; ?>">
                 <input type="hidden" id="postNumber" name="postNumber" value="<?php echo $postNumber; ?>">
@@ -90,7 +90,7 @@
                     </li>
                 </button>
             </form>
-            <form method="get" action="{{ route('posts.vote', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="form-horizontal">
+            <form method="post" action="{{ route('posts.vote', ['boardNumber' => $boardNumber, 'postNumber' => $postNumber]) }}" class="form-horizontal">
                 {!! csrf_field() !!}
                 <input type="hidden" id="userNumber" name="userNumber" value="<?php echo $currentUserNumber; ?>">
                 <input type="hidden" id="postNumber" name="postNumber" value="<?php echo $postNumber; ?>">

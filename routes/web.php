@@ -157,7 +157,7 @@ Route::get('boards/{boardNumber}/posts/{postNumber}/fileDownload', [
     'uses' => 'PostController@fileDownload'
 ]);
 //게시글 좋아요,싫어요
-Route::get('boards/{boardNumber}/posts/{postNumber}/vote', [
+Route::post('boards/{boardNumber}/posts/{postNumber}/vote', [
     'as' => 'posts.vote',
     'uses' => 'PostController@vote'
 ]);
@@ -184,3 +184,18 @@ Route::post('boards/{boardNumber}/posts/{postNumber}/{commentNumber}/delete', [
     'as' => 'posts.commentDelete',
     'uses' => 'CommentsController@destroy'
 ]);
+
+
+
+
+
+////////API 꾸미기
+Route::get('api/products', function () {
+    return view('api.index');
+});
+
+Route::get('tokenShow', 'GuzzleController@GetToken')->name('tokenShow');
+Route::get('restfulShow', 'GuzzleController@index')->name('restfulShow');
+
+
+Route::resource('Products', 'ProductController');
