@@ -26,7 +26,7 @@
 
                 <div class="mainLogo"><a href="/"><img src="/images/logo.png" style="width:60px; margin-left:56px; padding:10px 10px 10px 0"></a></div>
 
-                <a class="navbar-brand" href="{{ url('/api/products') }}" style="margin-left:30px;">
+                <a class="navbar-brand" href="{{ url('/restfulShow') }}" style="margin-left:30px;">
                     Restful API
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

@@ -23,7 +23,6 @@ $(document).ready(function(e) {
 </script>
 
 @section('content')
-
 <div class="container">
     <div class="navbar col-md-4 navbar-laravel" id="http">HTTP상태 : {{$res['status']}}</div>
 
@@ -47,17 +46,28 @@ $(document).ready(function(e) {
             <form method="post" class="postIndex_name" action="{{ route('Products.store') }}">
                 {!! csrf_field() !!}
                 <ul>
-                    <li><h5>상품명</h5><input type="text" name="name"></li>
-                    <li><h5>가격</h5><input type="number" name="price" placeholder="숫자"></li>
-                    <li><h5>재고</h5><input type="number" name="stock" placeholder="숫자"></li>
-                    <li><h5>할인율</h5><input type="number" name="discount" placeholder="1~100사이 숫자"></li>
+                    <li><h5>상품명</h5><input type="text" name="name" value={{old('name')}}></li>
+                    <li><h5>가격</h5><input type="number" name="price" value={{old('price')}} placeholder="숫자"></li>
+                    <li><h5>재고</h5><input type="number" name="stock" value={{old('stock')}} placeholder="숫자"></li>
+                    <li><h5>할인율</h5><input type="number" name="discount" placeholder="1~100사이 숫자" value={{old('discount')}}></li>
                     <input type="hidden" name="user_id" value=6>
                     {{-- <li><h5>회원 일련번호</h5><input type="text" name="user_id" value=6 style="width:100px;"></li> --}}
-                    <li style="float:none; width:1000px;"><h5 style="clear:both;">설명</h5><textarea name="description" rows="4" ></textarea></li>
+                    <li style="float:none; width:1000px;"><h5 style="clear:both;">설명</h5><textarea name="description" rows="4" >{{old('description')}}</textarea></li>
                     <li style="float:left;"><button type="submit" class="btn btn-primary" style="margin-right:20px;">전 송</button><button type="button" id="can" class="btn btn-primary">취 소</button></li>
                 </ul>
             </form>
         </div>
+        @empty($res['code'])
+        @if ($errors->any())
+            <div class="alert alert-danger" style="margin-left: 55px;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+        @endempty
         <div class="Product_wrap">
                 @foreach($res['body']['data'] as $key => $value)
                     <?php $length = (int)$key+1?>
@@ -96,6 +106,17 @@ $(document).ready(function(e) {
                             </form>
 
                         </li>
+                        @if ($errors->any() and $res['code'])
+                            <div class="alert alert-danger"
+                            {{-- style="margin-left: 55px;" --}}
+                            >
+                                <ul>
+                                    @foreach ($errors->all() as $error)
+                                        <li>{{ $error }}</li>
+                                    @endforeach
+                                </ul>
+                            </div>
+                        @endif
                     @endisset
                     </div>
                 </ul>

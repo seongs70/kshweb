@@ -58,15 +58,23 @@ $(document).ready(function(e) {
             <form method="post" class="postIndex_name" action="{{ route('ReviewStore', ['id' => $res['id']]) }}">
                 {!! csrf_field() !!}
                 <ul>
-                    <li style="width:299px;"><h5 style="width:50px;">성함</h5><input type="text" name="name"></li>
-                    <li><h5 style="width:50px;">평점</h5><input type="number" name="star" placeholder="0~5 숫자만" min="0" max="5"></li>
+                    <li style="width:299px;"><h5 style="width:50px;">성함</h5><input type="text" name="name" ></li>
+                    <li><h5 style="width:50px;">평점</h5><input type="number" name="star" placeholder="0~5 숫자만" min="0" max="5" value={{old('star')}}></li>
                     <input type="hidden" name="productId" value={{$res['id']}}>
-                    <li style="float:none; width:1000px;"><h5 style="clear:both; width:50px;">내용</h5><textarea name="description" rows="4" ></textarea></li>
+                    <li style="float:none; width:1000px;"><h5 style="clear:both; width:50px;">내용</h5><textarea name="description" rows="4" >{{old('description')}}</textarea></li>
                     <li style="float:left; margin-left:49px; "><button type="submit" class="btn btn-primary" style="margin-right:20px;">전 송</button><button type="button" id="can" class="btn btn-primary">취 소</button></li>
                 </ul>
             </form>
         </div>
-
+        @if ($errors->any())
+            <div class="alert alert-danger" style="margin-left: 55px;">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
     <div class="Review">
     @foreach ($res['body']['data'] as $key )
         <ul class="free">
@@ -88,25 +96,27 @@ $(document).ready(function(e) {
                 <form method="post" class="postIndex_name" action="{{ route('ReviewUpdate', ['productId' => $key['product_id'], 'reviewId' => $key['id']]) }}">
                     {!! csrf_field() !!}
                     <ul class="reviewEditUl">
-                        <li style="width:299px;"><h5 style="width:50px;">이름</h5><input type="text" name="name" value="{{$key['customer']}}"></li>
-                        <li style="float:none; width:1000px;"><h5 style="clear:both; width:50px;">설명</h5><textarea name="description" rows="3" >{{$key['body']}}</textarea></li>
-                        <li><h5 style="width:50px;">평점</h5><input type="number" name="star" value={{$key['star']}} min="0" max="5"></li>
+                        <li style="width:299px;"><h5 style="width:50px;">이름</h5><input type="text" name="name" value="{{$key['customer']}}" required/></li>
+                        <li style="float:none; width:1000px;"><h5 style="clear:both; width:50px;">설명</h5><textarea name="description" rows="3" required/>{{$key['body']}}</textarea></li>
+                        <li><h5 style="width:50px;">평점</h5><input type="number" name="star" value={{$key['star']}} min="0" max="5" required/></li>
                         <li style="float:left; margin-left: 50px;">
                             <button type="submit" class="btn btn-primary" style="margin:10px 20px 10px 0;">전 송</button>
                             <a href="{{route("ReviewIndex",['id' => $res['id'], 'request' => $res['bike']])}}"><button type="button" class="btn btn-primary cancle">취소</button></a></li>
                         <input type="hidden" name="productId" value={{$key['product_id']}}>
                         <input type="hidden" name="reviewId" value={{$key['id']}}>
+                        <input type="hidden" name="update" value={{'update'}}>
                     </ul>
                 </form>
             </li>
+
             <form method="post" class="dele" action="{{ route('ReviewDelete', ['productId' => $key['product_id'], 'reviewId' => $key['id']]) }}">
                 {!! csrf_field() !!}
                 <input type="hidden" name="productId" value={{$key['product_id']}}>
                 <input type="hidden" name="reviewId" value={{$key['id']}}>
                 <button type="submit" class="btn btn-default">삭제</button>
             </form>
-        </ul>
 
+        </ul>
 
         @endforeach
     </div>

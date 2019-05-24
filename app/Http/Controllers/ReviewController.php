@@ -7,6 +7,23 @@ use GuzzleHttp\Client;
 
 class ReviewController extends Controller
 {
+    public function productValidate($request)
+    {
+        $messages = [
+            'name.required' => '이름 필수 입력 항목입니다.',
+            'star.required' => '평점은 필수 입력 항목입니다.',
+            'description.required' => '설명은 필수 입력 항목입니다.',
+            'name.max' => '이름은 최대 200 글자 이하만 가능합니다.',
+            'description.max' => '설명은 최대 500 글자 이하만 가능합니다.',
+            'star.integer' => '숫자만 가능합니다',
+            'star.between' => '0~5 숫자만 가능합니다',
+        ];
+        $validatedData = $request->validate([
+            'name' => 'required|max:200',
+            'star' => 'required|integer|between:0,5',
+            'description' => 'required|max:500',
+        ],$messages);
+    }
     public function index($id, $request)
     {
 
@@ -40,7 +57,7 @@ class ReviewController extends Controller
     public function store(Request $request)
     {
 
-
+        $this->productValidate($request);
         $client = new Client([
             'headers' => [
                 'content-type' => 'application/json',
@@ -101,7 +118,8 @@ class ReviewController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // dd($request);
+
+        
         $client = new Client([
             'headers' => [
                 'content-type' => 'application/json',

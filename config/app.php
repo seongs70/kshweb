@@ -91,7 +91,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'ko',
 
     /*
     |--------------------------------------------------------------------------
@@ -124,13 +124,13 @@ return [
         /*
          * Laravel Framework Service Providers...
          */
-        
+
         //intervention/image:이미지 실시간 미리보기(썸네일) , base64 해결하기 위해
         Intervention\Image\ImageServiceProvider::class,
-        
+
         //씨케이에디터
         Unisharp\Ckeditor\ServiceProvider::class,
-        
+
         //아이피
         Fideloper\Proxy\TrustedProxyServiceProvider::class,
         //플래쉬
@@ -173,8 +173,8 @@ return [
 
         //네이버
         SocialiteProviders\Manager\ServiceProvider::class,
-        
-        
+
+
     ],
 
     /*
@@ -189,7 +189,7 @@ return [
     */
 
     'aliases' => [
-       
+
         //intervention/image:이미지 실시간 미리보기 , base64 해결하기 위해
         'Image' => Intervention\Image\Facades\Image::class,
         'Flash' => Laracasts\Flash\Flash::class,

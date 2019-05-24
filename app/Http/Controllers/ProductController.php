@@ -12,7 +12,28 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    public function productValidate($request)
+    {
+     $messages = [
+         'name.required' => '상품명 필수 입력 항목입니다.',
+         'description.required' => '설명은 필수 입력 항목입니다.',
+         'stock.required' => '재고는 필수 입력 항목입니다.',
+         'price.required' => '가격은 필수 입력 항목입니다.',
+         'discount.required' => '할인율은 필수 입력 항목입니다.',
+         'name.max' => '상풍명은 최대 200 글자 이하만 가능합니다.',
+         'description.max' => '설명은 최대  500글자 이하만 가능합니다.',
+         'stock.max' => '재고는 최대  글자 6이하만 가능합니다.',
+         'price.max' => '가격은 최대  글자 10이하만 가능합니다.',
+         'discount.max' => '할인율은 최대  2글자 이하만 가능합니다.',
+     ];
+     $validatedData = $request->validate([
+         'name' => 'required|max:200',
+         'description' => 'required',
+         'stock' => 'required|max:6',
+         'price' => 'required|max:10',
+         'discount' => 'required|max:2',
+     ],$messages);
+    }
     public function index(Request $request)
     {
              $client = new Client;
@@ -21,7 +42,7 @@ class ProductController extends Controller
              $res['status'] = $response -> getStatusCode ();
              $res['body'] = $response -> getBody ();
              $res['body'] = json_decode($res['body'], true);
-             
+
              return view('api.Product.index', compact('res'));
     }
 
@@ -41,8 +62,11 @@ class ProductController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
+        $this->productValidate($request);
+
         $client = new Client([
             'headers' => [
                 'content-type' => 'application/json',
@@ -107,7 +131,7 @@ class ProductController extends Controller
      */
     public function update(Request $request, $id)
     {
-
+        $this->productValidate($request);
         $client = new Client([
             'headers' => [
                 'content-type' => 'application/json',
