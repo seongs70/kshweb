@@ -3,20 +3,22 @@ li {list-style:none;}
     float:left; margin-bottom:30px;
 }
 .Product ul {margin-bottom:0;}
+.Product ul li {margin:0px 0;}
 #price{
 padding-right:20px;
 font-size:18px; color:coral;
 
 }
 #btnList{ display:inline-block; }
-#btnList li {padding-right:40px;}
+#btnList li {padding-right:20px;}
 .rating{ display:inline; padding-right:20px;}
 .Product_wrap{
     width:1200px;
     margin:0 auto;
     margin-top:50px; clear:both;
 }
-.productCreate{margin-top:60px; display:none;}
+.productCreate{margin-top:60px; display:none; height:300px;}
+.productEdit {margin-top:20px; display:none;}
 .productCreate h5 {
     font-size:14px; float:left;
     width:120px;    padding-top:.5rem;
@@ -24,9 +26,10 @@ font-size:18px; color:coral;
 
 }
 .productCreate ul li {margin-bottom:20px; float:left; width:400px;}
-.productCreate input{width:200px;}
-.productCreate textarea{width:500px;}
-.productCreate input, textarea{
+.productEdit ul li {float:left; width:400px; margin-bottom:20px;}
+.productCreate input,.productEdit input{width:200px;}
+.productCreate textarea, .productEdit textarea{width:500px;}
+input, textarea{
     display: block;
     padding: .375rem .75rem;
     font-size: .9rem;
@@ -41,6 +44,64 @@ font-size:18px; color:coral;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out,-webkit-box-shadow .15s ease-in-out;
 }
-#update{margin-left:40px;}
 .Product{position:relative;}
 .productEdit{position:absolute;}
+.pro {margin-top:15px; height:215px; padding-top:50px;}
+#update {float:left; margin-right:20px;}
+
+/* //////////////////리뷰//////////////////// */
+
+
+.Review img{border-radius: 100%;}
+
+.reviewForm ul, .reviewEdit ul{
+    width:75%; margin:0 auto;
+    margin:0 auto;
+
+}
+.free{
+    margin-bottom:100px; height:400px;
+    position:relative;
+
+}
+.free:first-child{margin-top:60px;}
+.reviewForm ul li {
+    padding:3px 0;
+}
+.Review ul li:first-child{float:none; }
+.reviewBtn{
+    width: 63%;  margin: 0 auto;
+    margin-top:20px;
+}
+.reviewEdit{height:265px;}
+.reviewEditUl h5{font-size:14px; float:left; padding-top:14px;}
+.reviewEditUl li input, .reviewEditUl li textarea{
+    float:left; margin:6px 0;
+}
+.reviewEditUl li textarea{
+    min-width:630px;
+}
+.reviewEditUl li input{height:35px;}
+.reviewEditUl li:first-child {margin-top:30px;}
+.reviewEditUl li:first-child h5 {display:inline; }
+.reviewEditUl li {clear:both;}
+.reviewEditUl li:last-child{margin-top:20px;}
+.reviewBtnEdit,.reviewBtnDelete{display:inline;}
+.reviewBtnEdit{ }
+.reviewBtnEdit button, .reviewBtnDelete button{ margin-top:30px;}
+.displayblock{display:block;}
+.displaynone{display:none;}
+.dele{
+    position:absolute;
+    bottom: -9%;
+    left: 38.2%;
+}
+.reviewBtnEdit{position:absolute;
+    bottom: -5.4%; left: 31%;
+}
+
+
+#http{ background-color:antiquewhite; padding-left:30px;
+    margin-bottom:30px; margin-top:10px;
+    margin-left:54px;
+}

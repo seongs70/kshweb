@@ -43,7 +43,7 @@
         font-size:13px;
     }
     .login a:hover{color:darkorange; font-weight: bold;}
-    .ksh button{color:burlywood;}
+    .ksh button{color:cyan;}
     .naver_login{
         width:92px; height:35px;
         background-image:url(/images/naver_login.PNG); background-repeat:no-repeat;

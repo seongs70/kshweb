@@ -187,15 +187,21 @@ Route::post('boards/{boardNumber}/posts/{postNumber}/{commentNumber}/delete', [
 
 
 
-
-
-////////API 꾸미기
+////////API index
 Route::get('api/products', function () {
     return view('api.index');
 });
-
+//토큰
 Route::get('tokenShow', 'GuzzleController@GetToken')->name('tokenShow');
 Route::get('restfulShow', 'GuzzleController@index')->name('restfulShow');
 
-
+//Prodcut
 Route::resource('Products', 'ProductController');
+Route::post('Products/{id}', 'ProductController@update')->name('productUpdate');
+Route::post('Productss/{id}', 'ProductController@destroy')->name('productDelete');
+
+//Review
+Route::get('api/products/{id}/reviews/{request}', 'ReviewController@index')->name('ReviewIndex');
+Route::post('api/products/{id}/reviews', 'ReviewController@store')->name('ReviewStore');
+Route::post('api/products/{productId}/reviews{reviewId}', 'ReviewController@update')->name('ReviewUpdate');
+Route::post('api/productss/{productId}/reviews{reviewId}', 'ReviewController@destroy')->name('ReviewDelete');
