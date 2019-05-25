@@ -24,9 +24,9 @@ $(document).ready(function(e) {
 
 @section('content')
 <div class="container">
-    <div class="navbar col-md-4 navbar-laravel" id="http">HTTP상태 : {{$res['status']}}</div>
+    <div class="navbar col-md-4 navbar-laravel" id="http1">HTTP상태 : {{$res['status']}}</div>
 
-        <div class="col-md-12">
+        <div class="col-md-12" id="asz">
                 <ul id="btnList">
                     <li>
                     <a href="{{route('Products.index')}}">
@@ -42,7 +42,7 @@ $(document).ready(function(e) {
                 </ul>
                 <button class="btn btn-primary click">상품 생성</button>
         </div>
-        <div class="productCreate">
+        <div class="productCreate" id="productCreate1">
             <form method="post" class="postIndex_name" action="{{ route('Products.store') }}">
                 {!! csrf_field() !!}
                 <ul>
@@ -52,7 +52,7 @@ $(document).ready(function(e) {
                     <li><h5>할인율</h5><input type="number" name="discount" placeholder="1~100사이 숫자" value={{old('discount')}}></li>
                     <input type="hidden" name="user_id" value=6>
                     {{-- <li><h5>회원 일련번호</h5><input type="text" name="user_id" value=6 style="width:100px;"></li> --}}
-                    <li style="float:none; width:1000px;"><h5 style="clear:both;">설명</h5><textarea name="description" rows="4" >{{old('description')}}</textarea></li>
+                    <li style="float:none; "><h5 style="clear:both;">설명</h5><textarea name="description" rows="4" >{{old('description')}}</textarea></li>
                     <li style="float:left;"><button type="submit" class="btn btn-primary" style="margin-right:20px;">전 송</button><button type="button" id="can" class="btn btn-primary">취 소</button></li>
                 </ul>
             </form>
@@ -122,17 +122,17 @@ $(document).ready(function(e) {
                 </ul>
 
                 @isset($res['code'])
-                    <div class="productEdit">
+                    <div class="productEdit" id="productEdit">
                         <form method="post" action="{{ route('productUpdate', ['id' => $res['body']['data']['id']]) }}">
                             {!! csrf_field() !!}
                             <ul>
-                                <li><h5>상품명</h5><input type="text" name="name" value={{$res['body']['data']['name']}}></li>
+                                <li id="Proname1"><h5>상품명</h5><input type="text" name="name" value={{$res['body']['data']['name']}}></li>
                                 <li><h5>재고</h5><input type="number" name="stock" value={{$res['body']['data']['stock']}}></li>
                                 <li><h5>가격</h5><input type="number" name="price" value={{$res['body']['data']['price']}}></li>
                                 <li><h5>할인율</h5><input type="number" name="discount" value={{$res['body']['data']['discount']}}></li>
                                 {{-- <input type="hidden" name="id" value={{$res['body']['data']['id']}}> --}}
                                 {{-- <li><h5>회원 일련번호</h5><input type="text" name="user_id" value=6 style="width:100px;"></li> --}}
-                                <li style="float:none; width:1000px;"><h5 style="clear:both;">설명</h5><textarea name="description" rows="4" style="width:600px;">{{$res['body']['data']['description']}}</textarea></li>
+                                <li style="float:none;"><h5 style="clear:both;">설명</h5><textarea name="description" rows="4">{{$res['body']['data']['description']}}</textarea></li>
                                 <li style="float:left;"><button type="submit" class="btn btn-primary" style="margin-right:20px;">전 송</button><button type="button" id="can2" class="btn btn-primary">취 소</button></li>
                             </ul>
                         </form>

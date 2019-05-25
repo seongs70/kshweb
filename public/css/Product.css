@@ -17,8 +17,12 @@ font-size:18px; color:coral;
     margin:0 auto;
     margin-top:50px; clear:both;
 }
-.productCreate{margin-top:60px; display:none; height:300px;}
+.productCreate{margin-top:60px; display:none; height:300px;  margin-left:175px;}
+#productCreate1{margin-left:19px;}
 .productEdit {margin-top:20px; display:none;}
+#productEdit{width:590px;}
+#productEdit ul li{width:245px;}
+
 .productCreate h5 {
     font-size:14px; float:left;
     width:120px;    padding-top:.5rem;
@@ -94,14 +98,56 @@ input, textarea{
 .dele{
     position:absolute;
     bottom: -9%;
-    left: 38.2%;
+    left: 34%;
 }
 .reviewBtnEdit{position:absolute;
-    bottom: -5.4%; left: 31%;
+    bottom: -5.4%; left: 26.5%;
 }
 
 
 #http{ background-color:antiquewhite; padding-left:30px;
     margin-bottom:30px; margin-top:10px;
-    margin-left:54px; color:grey;
+    margin-left:214px; color:grey;
+}
+#http1{ background-color:antiquewhite; padding-left:30px;
+    margin-bottom:30px; margin-top:10px;
+    margin-left:54px; color:grey;}
+#col1{margin-left:200px;}
+#appCon {width:55%; }
+#appCon img {width:60Px;}
+.mainLogo{margin-right:30px;}
+@media screen and (max-width:960px) {
+.mainLogo{margin-right:0px;}
+#appCon {width:46%; margin-left:0; margin-right:0;}
+#appCon img {width:45Px;}
+#http1{margin-left:0;}
+#http{
+    width:99%; margin:0 auto;
+    margin-left:0; margin-bottom:30px;
+}
+.navbar-toggler, .navbar-brand { display:none;}
+#btnList{padding-left:0px;}
+.Product_wrap{width:97.5%;}
+.product ul, .productCreate ul { padding-left:0;}
+#RievewCreate{margin-left:0;}
+.productCreate{ margin-top:20px;}
+.productCreate ul li, .product ul li a img, .Product{width:100%;}
+.productCreate h5{width:70px;}
+.productCreate textarea{width:270px;}
+#asz{padding-left:0;}
+.productEdit, .productEdit ul li{width:100%;}
+#productEdit{width:100%;}
+#productEdit ul li{width:100%;}
+.productEdit textarea {width:100%;}
+.reviewForm ul{padding-left:0; margin-left:4%; width:92%}
+.free {padding-left:0; width:100%;}
+#col, {padding-left:0;}
+#col1 {margin-left:0; padding-left:0;}
+.reviewBtnEdit {left:4%; bottom:-16.4%}
+.dele{left:22%; bottom:-20%}
+.reviewEdit ul{width:100%; padding-left:0;}
+.reviewEditUl li textarea{min-width:29.5%}
+
+
+
 }

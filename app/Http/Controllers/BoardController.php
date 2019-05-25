@@ -81,8 +81,8 @@ class BoardController extends Controller
     //게시판 삭제
     public function destroy(Request $request)
     {
-        $boardNumber = $request->boardNumber;
-        \DB::table('boards')->where('boardNumber', $boardNumber)->delete();
+        // $boardNumber = $request->boardNumber;
+        // \DB::table('boards')->where('boardNumber', $boardNumber)->delete();
         return redirect('/boards');
     }
 

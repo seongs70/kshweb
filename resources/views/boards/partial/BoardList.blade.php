@@ -71,16 +71,16 @@
                     @empty
                     @endforelse
                 <div class="boardNameBtn ksh">
-                    <a href="/api/products"><button type="button" style="color:chartreuse;">RESTFul API</button></a><span>/</span>
+                    <a href="/api/products"><button type="button" style="color:chartreuse;">RESTful API</button></a><span>/</span>
                 </div>
                 <div class="boardNameBtn ksh">
-                    <a href="/board/profile"><button type="button">프로필(고정)</button></a><span>/</span>
+                    <a href="/board/profile"><button type="button">프로필</button></a><span>/</span>
                 </div>
                 <div class="boardNameBtn ksh">
-                    <a href="/board/publish"><button type="button">퍼블리싱(고정)</button></a><span>/</span>
+                    <a href="/board/publish"><button type="button">퍼블리싱</button></a><span>/</span>
                 </div>
                 <div class="boardNameBtn ksh">
-                    <a href="/board/design"><button type="button">편집디자인(고정)</button></a><span>/</span>
+                    <a href="/board/design"><button type="button">편집디자인</button></a><span>/</span>
                 </div>
             </div>
         </div>

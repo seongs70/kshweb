@@ -22,11 +22,11 @@
 <body>
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
-            <div class="container">
+            <div class="container" id="appCon">
 
-                <div class="mainLogo"><a href="/"><img src="/images/logo.png" style="width:60px; margin-left:56px; padding:10px 10px 10px 0"></a></div>
+                <div class="mainLogo"><a href="/"><img src="/images/logo.png" ></a></div>
 
-                <a class="navbar-brand" href="{{ url('/restfulShow') }}" style="margin-left:30px;">
+                <a class="navbar-brand" id="RestfulLink" href="{{ url('/restfulShow') }}" >
                     Restful API
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">

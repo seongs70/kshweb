@@ -44,8 +44,8 @@ $(document).ready(function(e) {
 </script>
 @section('content')
 <div class="container">
-    <div class="navbar col-md-4 navbar-laravel" id="http" style="margin-left:214px;">HTTP상태 : {{$res['status']}}</div>
-        <div class="col-md-12" style="margin-left:200px;">
+    <div class="navbar col-md-4 navbar-laravel" id="http">HTTP상태 : {{$res['status']}}</div>
+        <div class="col-md-12" id="col1">
                 <a href="{{ route('Products.show', ['id' => $res['id'], 'request' => $res['bike']]) }}"><button type="button" class="btn btn-primary">뒤로가기</button></a>
                 <ul id="btnList" style="padding-left: 20px;">
                     <li>
@@ -54,15 +54,15 @@ $(document).ready(function(e) {
                 </ul>
                 <button class="btn btn-primary click">리뷰생성</button>
         </div>
-        <div class="productCreate" style=" margin-left:126px;">
+        <div class="productCreate" id="RievewCreate">
             <form method="post" class="postIndex_name" action="{{ route('ReviewStore', ['id' => $res['id']]) }}">
                 {!! csrf_field() !!}
                 <ul>
                     <li style="width:299px;"><h5 style="width:50px;">성함</h5><input type="text" name="name" ></li>
                     <li><h5 style="width:50px;">평점</h5><input type="number" name="star" placeholder="0~5 숫자만" min="0" max="5" value={{old('star')}}></li>
                     <input type="hidden" name="productId" value={{$res['id']}}>
-                    <li style="float:none; width:1000px;"><h5 style="clear:both; width:50px;">내용</h5><textarea name="description" rows="4" >{{old('description')}}</textarea></li>
-                    <li style="float:left; margin-left:49px; "><button type="submit" class="btn btn-primary" style="margin-right:20px;">전 송</button><button type="button" id="can" class="btn btn-primary">취 소</button></li>
+                    <li style="float:none; "><h5 style="clear:both; width:50px;">내용</h5><textarea name="description" rows="4" >{{old('description')}}</textarea></li>
+                    <li style="float:left;"><button type="submit" class="btn btn-primary" style="margin-right:20px;">전 송</button><button type="button" id="can" class="btn btn-primary">취 소</button></li>
                 </ul>
             </form>
         </div>
@@ -99,7 +99,7 @@ $(document).ready(function(e) {
                         <li style="width:299px;"><h5 style="width:50px;">이름</h5><input type="text" name="name" value="{{$key['customer']}}" required/></li>
                         <li style="float:none; width:1000px;"><h5 style="clear:both; width:50px;">설명</h5><textarea name="description" rows="3" required/>{{$key['body']}}</textarea></li>
                         <li><h5 style="width:50px;">평점</h5><input type="number" name="star" value={{$key['star']}} min="0" max="5" required/></li>
-                        <li style="float:left; margin-left: 50px;">
+                        <li style="float:left;">
                             <button type="submit" class="btn btn-primary" style="margin:10px 20px 10px 0;">전 송</button>
                             <a href="{{route("ReviewIndex",['id' => $res['id'], 'request' => $res['bike']])}}"><button type="button" class="btn btn-primary cancle">취소</button></a></li>
                         <input type="hidden" name="productId" value={{$key['product_id']}}>
