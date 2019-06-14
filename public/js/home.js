@@ -34,6 +34,8 @@ var imgNum=0;
 	}
 	var winWidth=$(window).width();
 	if(winWidth>1280){
+
+
 	     //자동으로 슬라이드됨
 		var auto=setInterval(autofn,3000);
 
@@ -66,6 +68,7 @@ var imgNum=0;
 	var winWidth=$(window).width();
 	if(winWidth>960){
      //flip
+
 		$('.hover').hover(function(){
 			$(this).addClass('flip');
 		},

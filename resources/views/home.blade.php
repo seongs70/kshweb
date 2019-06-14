@@ -14,7 +14,7 @@
 @section('content')
 <div class="slideshow">
     <ul>
-        <li><img src="images/background1.jpg"><img src="images/m_background1.jpg"><a class="btn btn-default git" href="https://github.com/seongs70/kshweb"target="_blank">Github 바로가기</a>
+        <li><img id="backimg1" src="images/background1.jpg"><img id="backimg2" src="images/m_background1.jpg"><a class="btn btn-default git" href="https://github.com/seongs70/kshweb"target="_blank">Github 바로가기</a>
         </li>
         <li><a href="http://user156.dothome.co.kr/html/"target="_blank"><img src="images/background2.jpg">
             </a>
@@ -49,7 +49,7 @@
             <li><img src="images/boardicon2.png" alt="boardicon"><h3>Gallery</h3></li>
             <li><img src="images/boardicon3.png" alt="boardicon"><h3>Q&A</h3></li>
         </ul>
-        <ul>
+        <ul id="bg3_1ul">
             <li>게시판 생성 및 관리</li>
             <li>3Type (자유, 갤러리, Q&A)</li>
             <a href="http://115.68.220.209:8000/boards/"><li class="btn btn-default">바로가기</li></a>

@@ -16,7 +16,7 @@
     a {text-decoration:none; color:#333; }
     a:hover {text-decoration: none;}
     li {list-style:none;}
-
+    body{background:#f2f4f7;}
     @yield('style')
 </style>
 <body>

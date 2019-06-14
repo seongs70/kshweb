@@ -24,58 +24,60 @@ class PostController extends Controller
     }
 
     //게시글 목록
-    public function index(Request $request, $slug = null)
+    public function index(Request $request)
     {
-        //게시판 코드, 일련번호, 명, 변수처리
-        $boardTypeCode = $request -> boardTypeCode;
-        $boardNumber = $request -> boardNumber;
-        $boardName = $request -> boardName;
-        //댓글 데이터 가져오기
-        $comment = \App\Comment::get();
-        // user() 관계가 필요 없는 다른 로직 수행
-        //$posts->load('user');
-        ///게시판 데이터 가져오기
-        $posts = \App\Post::get();
-        // latest : 정렬 역순으로 나오게 하기, paginate:페이지 개수 설정, get()저걸 해야 아래 where구문이 먹힌다
-        $posts = \App\Post::where('boardNumber', '=', $boardNumber)->where('postparentNumber',null)->latest()->paginate(10);
-        //form에서 select : 제목, 내용, 이름, 무엇인지의 대한 변수
-        $find = $request -> find;
-        //검색한 내용 변수저장
-        $search  = $request -> search;
+    
 
-        //검색값이 있으면 검색값을 찾는것 검색값 앞뒤 아무거나 붙을 수 있다
-        if($find || $search !== null){
-        $searchs = \App\Post::where('boardNumber',$boardNumber)->where($find, 'like', '%' . $search . '%')->where('postparentNumber',null)->latest()->paginate(10);
-        }
-        //게시판 코드가 2면 섬네일 데이터를 보내준다, 게시판 코드가 2가아니면 썸네일 코드가 없다
-        //get으로 가져오면 compact를 사용하면 get 정보를 view에 데이터를 뿌려줄 수 있다. compact가 적용되는 건 posts
-        //나머지는 프론트단에서 submit으로 보낸값들을 변수로 지정해 리턴하는 view에 데이터를 넘겨준다
-        if($boardTypeCode == 2 ){
-            if(isset($searchs) && isset($thumbnail))
-            {
-                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','searchs','find','search','boardTypeCode','thumbnail'));
-            }
-            else if(isset($searchs) && empty($thumbnail))
-            {
-                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','searchs','find','search','boardTypeCode'));
-            }
-            else if(empty($searchs) && isset($thumbnail))
-            {
-                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode','thumbnail'));
-            }
-            else if(empty($searchs) && empty($thumbnail))
-            {
-                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode'));
-            }
-        }else{
-            if(isset($searchs)){
-                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','searchs','find','search','boardTypeCode'));
-            }
-            else
-            {
-                return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode'));
-            }
-        }
+        // //게시판 코드, 일련번호, 명, 변수처리
+        // $boardTypeCode = $request -> boardTypeCode;
+        // $boardNumber = $request -> boardNumber;
+        // $boardName = $request -> boardName;
+        // //댓글 데이터 가져오기
+        // $comment = \App\Comment::get();
+        // // user() 관계가 필요 없는 다른 로직 수행
+        // //$posts->load('user');
+        // ///게시판 데이터 가져오기
+        // $posts = \App\Post::get();
+        // // latest : 정렬 역순으로 나오게 하기, paginate:페이지 개수 설정, get()저걸 해야 아래 where구문이 먹힌다
+        // $posts = \App\Post::where('boardNumber', '=', $boardNumber)->where('postparentNumber',null)->latest()->paginate(10);
+        // //form에서 select : 제목, 내용, 이름, 무엇인지의 대한 변수
+        // $find = $request -> find;
+        // //검색한 내용 변수저장
+        // $search  = $request -> search;
+        //
+        // //검색값이 있으면 검색값을 찾는것 검색값 앞뒤 아무거나 붙을 수 있다
+        // if($find || $search !== null){
+        // $searchs = \App\Post::where('boardNumber',$boardNumber)->where($find, 'like', '%' . $search . '%')->where('postparentNumber',null)->latest()->paginate(10);
+        // }
+        // //게시판 코드가 2면 섬네일 데이터를 보내준다, 게시판 코드가 2가아니면 썸네일 코드가 없다
+        // //get으로 가져오면 compact를 사용하면 get 정보를 view에 데이터를 뿌려줄 수 있다. compact가 적용되는 건 posts
+        // //나머지는 프론트단에서 submit으로 보낸값들을 변수로 지정해 리턴하는 view에 데이터를 넘겨준다
+        // if($boardTypeCode == 2 ){
+        //     if(isset($searchs) && isset($thumbnail))
+        //     {
+        //         return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','searchs','find','search','boardTypeCode','thumbnail'));
+        //     }
+        //     else if(isset($searchs) && empty($thumbnail))
+        //     {
+        //         return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','searchs','find','search','boardTypeCode'));
+        //     }
+        //     else if(empty($searchs) && isset($thumbnail))
+        //     {
+        //         return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode','thumbnail'));
+        //     }
+        //     else if(empty($searchs) && empty($thumbnail))
+        //     {
+        //         return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode'));
+        //     }
+        // }else{
+        //     if(isset($searchs)){
+        //         return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','searchs','find','search','boardTypeCode'));
+        //     }
+        //     else
+        //     {
+        //         return view('posts.postIndex', compact('posts','boardNumber','boardName','comment','find','search','boardTypeCode'));
+        //     }
+        // }
     }
 
     //게시글 생성 뷰 데이터

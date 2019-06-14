@@ -29,7 +29,7 @@
         </div>
             <form method="post" action="{{ route('board.delete') }}" style="display: inline;">
                    {!! csrf_field() !!}
-                    <input type="hidden" name="boardNumber" value="{{$boardNumber}}" />
+                    <input type="hidden" name="names[Id]" value="{{$boardNumber}}" />
                     <button id="budelete" class="btn btn-primary" type="submit">삭제(게시판 삭제 당해서 미작동)</button>
             </form>
     </div>

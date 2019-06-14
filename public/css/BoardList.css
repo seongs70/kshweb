@@ -30,10 +30,10 @@
     .boardNameBtn{float:left;}
     .mainLogo_wrap{width:100%; clear:both;}
     .mainLogo{
-        width:80px; height:80px;
+        width:72px; height:72px;
         margin:0 auto; margin-bottom:2px;
     }
-    .mainLogo img{ width:80px;}
+    .mainLogo img{ width:72px;}
     .PC_loginWrap {
         width:1100px; margin:0 auto;
         padding-top:20px; position:relative;
@@ -102,7 +102,7 @@
 
     }
     .boardNameBtn_wrap button{padding-top: 0px; font-size:3.1vw; color:#808080;}
-    .ksh button {color:burlywood;}
+    .ksh button {color:cyan;}
     .boardNameBtn_wrap > div:nth-child(4){ margin-top:2vw;}
     .boardNameBtn_wrap span, .boardNameBtn span:last-child{ display:none;}
     .m_login_icon, .menu_btn{display:block;}

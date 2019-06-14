@@ -1,3 +1,4 @@
+
 <script type="text/javascript" src="{!! asset('js/boardList.js') !!}"></script>
 <div class="wrap">
     <header>
@@ -51,20 +52,14 @@
             <div class="m_board">
                 <a href="/boards/">게시판 관리</a>
             </div>
+
             <div class="boardNameBtn_wrap">
                 <!--게시판 생성 반복문-->
-               <div style="display:none;">{{$boards=0}}</div>
-                    @forelse($boards = \App\Board::get() as $board)
-                        <div class="none">{{ $boardNumber = $board->boardNumber }}</div>
-                        <div class="none">{{ $boardName = $board->boardName }}</div>
+               <div style="display:none;"></div>
+                    @forelse($boards[0] as $board)
                         <div class="boardNameBtn">
-                            <a href="boards/{{ $board->boardNumber }}/posts">
-                                <form method="get" action="{{ route('posts.index', ['boardNumber' => $board->boardNumber]) }}">
-                                <input type="hidden" id="boardTypeCode" name="boardTypeCode" value="{{ $board -> boardTypeCode }}">
-                                <input type="hidden" id="boardName" name="boardName" value="{{$boardName}}">
-                                <input type="hidden" id="boardNumber" name="boardNumber" value="<?php echo $boardNumber; ?>">
-                                <button type="submit">{{ $board->boardName }}</button>
-                                </form>
+                            <a href={{ route('posts.index', ['boardNumber' => $board->boardNumber]) }}>
+                                <button type="submit">{{$board->boardNumber}}</button>
                             </a>
                             <span>/</span>
                         </div>

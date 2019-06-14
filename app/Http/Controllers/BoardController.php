@@ -4,19 +4,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Board;
-
-class BoardController extends Controller
+use App\Http\Controllers\classes\Database;
+class BoardController extends Database
 {
     //게시판 목록 데이터
      public function index()
     {
-        //게시판 데이터 가져오기
-        $boards = \App\Board::get();
-        // user() 관계가 필요 없는 다른 로직 수행
-        $boards->load('user');
-        //게시판 페이지 네이트
-        //$boards = \App\Boards::paginate(5);
-        return view('boards.boardIndex', compact('boards'));
+        $Objboards = new Database('Board', 'BoardNumber');
+        $boards[] = $Objboards->findAll();
+        return view('home', compact('boards'));
     }
 
     //게시글 생성

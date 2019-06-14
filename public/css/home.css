@@ -1,5 +1,6 @@
 @charset "utf-8";
 html, body { height:100%; }
+body{background:#f8fafc;}
     .container{
       width:100%; height:463px;
       background-image:url("/images/background.jpg"); background-position:bottom;
@@ -15,13 +16,13 @@ html, body { height:100%; }
       background-repeat: no-repeat; background-size:cover;
 
     }
-    .main1{ margin-top:100px;}
+    .main1{ margin-top:60px;}
     .main1 ul li:hover{opacity: 0.8;}
     .main2{ height:30px; }
     .main2 ul li{
         border-radius: 30px;
         text-align:center; font-size:24px;
-        font-weight: 500; height:130px;
+        font-weight: 500; height:85px;
         margin-top:15px;
     }
 
@@ -68,15 +69,16 @@ html, body { height:100%; }
     position: relative; overflow: hidden;
 
     }
-        .slideshow ul li img {width:100%; height:600px;}
+    .slideshow ul li img {width:100%; }
+    #backimg2{height:102vw;}
     .slidenav {
     width:100%; position: absolute;
 
     top: 50%; text-align: center;
 
     }
-    .git{background-color:#000; border:none; color:#fff;  position:absolute; bottom:8%; left:24%; font-size:21px;
-      padding:12px 40px; font-weight: bold; border:none;}
+    .git{background-color:#000; border:none; color:#fff;  position:absolute; bottom:8%; left:24%; font-size:19px;
+      padding:14px 25px; font-weight: bold; border:none;}
       .git:hover{color:lightcoral;}
     .slidenav__item {
     font-size:1vw; border: 0;
@@ -161,12 +163,13 @@ html, body { height:100%; }
     clear:both; z-index:1;
     }
     .bg3 {
-    width:100%; height:400px;
+    width:100%; height:325px;
     background-image:url(/images/bg_gallery.jpg); background-repeat:no-repeat;
     background-size:cover; clear:both;
     z-index:1; text-align: center;
     }
-    .bg3 ul{position:absolute;}
+    #bg3_1ul{ margin-top:-105px;}
+    .bg3 ul{position:absolute; top:50%; margin-top:-75px;}
     .bg3 ul:first-child{margin-right:130px; left:-70%;}
     .bg3 ul:last-child{right:-70%;}
     .bg3 ul:first-child li {
@@ -186,11 +189,11 @@ html, body { height:100%; }
      }
     .bg3 ul:last-child li:last-child:hover { background-color:beige; }
     .bg3 ul:last-child li:last-child:hover a {color:tomato;}
-    .bg3 img {width:90px; margin:0 30px;}
+    .bg3 img {width:80px; margin:0 30px;}
     .bg3_1 {
-        margin:0 auto; width:1200px;
+        margin:0 auto; width:1200px; height:325px;
         position:relative; display: -webkit-box;
-        padding-top:110px;
+
     }
     .alert-info{
         z-index: 1;    position:absolute;
@@ -199,16 +202,21 @@ html, body { height:100%; }
         padding:14px;
     }
     .boardSetting{ width:150px;}
+    #backimg2{display:none;}
 @media screen and (max-width:1280px) {
+    #backimg1{width:100%; height:600px;}
+    #backimg2{display:block;}
     ul{margin-bottom:0;}
-    .slideshow{}
+    .slideshow{height:102vw;}
     .slideshow ul li:first-child a {display:none;}
     .slideshow ul li:first-child img:first-child, .slidenav, .slideshow ul li:nth-child(2), .slideshow ul li:last-child, .main3, .main4 {
         display:none;
     }
+
     .slideshow ul li {
         height:146vw;
     }
+
     .git {
         width:41vw; left:50%;
         margin-left: -20.5vw; bottom:5%;
@@ -226,7 +234,7 @@ html, body { height:100%; }
     .bg3 ul:first-child {left:0%; margin-right:0;}
     .bg3 img {margin: 0 0; width:18vw;}
     .bg3 ul:first-child, .bg3 ul:last-child{left:0;  width:100%;}
-    .bg3 ul:first-child { top:10%;}
+    .bg3 ul:first-child { top:35%;}
     .bg3 ul:last-child{bottom:15%;}
     .bg3 ul:first-child li {padding-left: 12vw;}
 
@@ -242,4 +250,5 @@ html, body { height:100%; }
     .panel .front .pad{width:50vw; height:50vw;}
     .bg_01 h1{bottom:inherit; top:60%;}
     .main2{display:none;}
+    #bg3_1ul{ margin-top:0; top:55%;}
 }

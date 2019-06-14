@@ -18,6 +18,7 @@
 <link href="{{ asset('/css/users.css') }}" rel="stylesheet" type="text/css" >
 @endsection
 @section('content')
+<body style="background-color:gainsboro;">    
 <div class="register_wrap">
     <div class="logo">
         <a href="/"><img src="/images/logo.png"></a>

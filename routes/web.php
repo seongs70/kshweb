@@ -1,11 +1,9 @@
 <?php
+Route::get('/', [
+    'as' => 'boards.index',
+    'uses' => 'BoardController@index'
+]);
 
-Route::get('/', function () {
-    return view('home');
-});
-Route::get('home', function () {
-    return view('home');
-});
 
 
 //프로필 게시판
@@ -94,7 +92,7 @@ Route::get('board/{boardNumber}/', [
 
 Route::post('board/delete', [
     'as' => 'board.delete',
-    'uses' => 'BoardController@destroy'
+    'uses' => 'DatabaseController@index'
 ]);
 
 Route::get('board/{boardNumber}/edit', [
@@ -104,7 +102,7 @@ Route::get('board/{boardNumber}/edit', [
 
 Route::post('board/{boardNumber}/update', [
     'as' => 'board.update',
-    'uses' => 'BoardController@update'
+    'uses' => 'DatabaseController@index'
 ]);
 
 
@@ -116,7 +114,7 @@ Route::post('board/{boardNumber}/update', [
 
 ///////////게시글///////////
 //게시글 목록
-Route::get('/boards/{boardNumber}/posts', [
+Route::get('/boards/{boardNumber}/posts/{boards?}', [
     'as' => 'posts.index',
     'uses' => 'PostController@index'
 ]);
@@ -205,3 +203,8 @@ Route::get('api/products/{id}/reviews/{request}', 'ReviewController@index')->nam
 Route::post('api/products/{id}/reviews', 'ReviewController@store')->name('ReviewStore');
 Route::post('api/products/{productId}/reviews{reviewId}', 'ReviewController@update')->name('ReviewUpdate');
 Route::post('api/productss/{productId}/reviews{reviewId}', 'ReviewController@destroy')->name('ReviewDelete');
+
+
+
+//임시
+Route::post('temp', 'DatabaseController@index')->name('Kboard');

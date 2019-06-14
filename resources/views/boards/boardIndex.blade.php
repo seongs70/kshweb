@@ -19,19 +19,13 @@
         </ul>
         </div>
         <div class="boardContent">
-
         @forelse($boards as $board)
 
         <ul class="btn-default">
             <li>{{ $board->boardNumber }}</li>
             <li>
             <a href="/boards/{{ $board->boardNumber }}/posts">
-                <form method="get" action="{{ route('posts.index', ['boardNumber' => $board->boardNumber]) }}">
-                    <input type="hidden" id="boardTypeCode" name="boardTypeCode" value="{{$board->boardTypeCode}}">
-                    <input type="hidden" id="boardNumber" name="boardNumber" value="{{$board->boardNumber}}">
-                    <input type="hidden" id="boardName" name="boardName" value="{{$board->boardName}}">
-                    <button type="submit">{{ $board->boardName }}</button>
-                </form>
+                {{ $board->boardName }}
             </a>
             </li>
             <li>{{ $board->created_at->diffForHumans() }}</li>
@@ -53,5 +47,11 @@
         <div class="text-right">
             <a href="{{ route('boards.create') }}" class="btn btn-primary">게시판 만들기</a>
         </div>
+		@foreach ($boards as $board)
+			{{$board->name}}
+		@endforeach
+		{{ $boards->links() }}
 </div>
+
+
 @stop

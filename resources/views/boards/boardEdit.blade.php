@@ -15,13 +15,13 @@
         </div>
         <form action="{{ route('board.update', ['boardNumber'=> $boardNumber]) }}" method="post">
             {!! csrf_field() !!}
-
         <label for="title" style="margin-bottom:12px;" id="title_label">게시판명</label>
-        <input type="hidden" name="boardNumber" value="{{$boardNumber}}">
-        <input type="text" name="boardName" id="boardName" class="form-control" value="{{ old('boardName', $boardName) }}">
+        <input type="hidden" name="names[Id]" value="{{$boardNumber}}">
+        <input type="text" name="names[boardName]" id="boardName" class="form-control" value="{{ old('boardName', $boardName) }}">
             {!! $errors->first('boardName', '<span class="form-error">:message</span>') !!}
             <button class="btn btn-primary" id="btn-primary">수정하기</button>
         </form>
     </div>
 </div>
+
 @stop
